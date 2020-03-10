@@ -9,7 +9,7 @@ class User < ApplicationRecord
     def self.find_for_trello_oauth(auth)
       user_params = auth.slice('provider', 'uid')
       user_params.merge! auth.info.slice('email', 'name')
-      user_params[:avatar_url] = auth.dig('extra', 'raw_info', 'avatarUrl') + '/170.png'
+      user_params[:avatar_url] = auth.dig('extra', 'raw_info', 'avatarUrl').present? ? auth.dig('extra', 'raw_info', 'avatarUrl') + '/170.png' : 'default-profile-picture.png'
       user_params[:profile_url] = auth.info.dig('urls', 'profile')
       user_params[:username] = auth.info['nickname']
       user_params[:token] = auth.credentials.token
