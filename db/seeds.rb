@@ -18,7 +18,7 @@ print "OK"
 
 puts "Seeding the DB......"
 
-pierre        = Client.create!(first_name: 'Pierre', last_name: 'Facq', email: 'pierre@lewagon.org', company: 'Le Wagon Nantes')
+pierre        = Client.create!(first_name: 'Pierre', last_name: 'Facq', email: 'pierre@lewagon.org', company: 'Le Wagon Nantes', phone: '0622796973')
 yoichi        = User.create!(email: 'yoichi.trigalot@gmail.com')
 marketplace   = Project.create!(title: 'AirMasknShare', client: pierre, user: yoichi)
 
