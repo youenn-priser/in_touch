@@ -8,18 +8,17 @@ class GetCardsFromTrello #< ApplicationService
   end
 
   def self.call
+  # def call
     params = {
         cards: 'all',
         card_fields: 'all', #id,name,dateLastActivity,desc,idLabels,labels
         filter: 'open',
         fields: 'all',
-        # key: ENV['TRELLO_API_KEY'],
-        key: '170be5e01f018dae9aba1a228c8a23b2',
-        # token: user.token
-        token: '83d92ded92b18476188d164979237e52b42db24c912d6d2b12be67f3098c4f68'
+        key: ENV['TRELLO_API_KEY'],
+        token: user.token
       }
-    board_id = '5e5d2468afb9ce59727e2540'
-    response = RestClient.get "https://api.trello.com/1/boards/#{board_id}/lists", params: params
+    # @board_id = '5e5d2468afb9ce59727e2540'    Board AirMAskAndShare
+    response = RestClient.get "https://api.trello.com/1/boards/#{@board_id}/lists", params: params
     p response
 
     # board_lists = JSON.parse(response.body).map {|list| list["name"]}
@@ -28,4 +27,4 @@ class GetCardsFromTrello #< ApplicationService
   end
 end
 
-GetCardsFromTrello.call
+# GetCardsFromTrello.call
