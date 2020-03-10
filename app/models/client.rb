@@ -8,4 +8,5 @@ class Client < ApplicationRecord
   validates :company, presence: true
 
 
+
 end
