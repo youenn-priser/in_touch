@@ -3,7 +3,11 @@ Rails.application.routes.draw do
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   devise_scope :user do
    delete 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
-end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  end
+
   root to: 'pages#home'
+
+  resources :projects, only: [:index, :show, :new, :create] do
+    resources :reports, only: [:index, :new, :create]
+  end
 end
