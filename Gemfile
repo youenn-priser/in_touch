@@ -12,6 +12,7 @@ gem 'redis'
 
 # Own
 gem 'omniauth-trello'
+gem 'rest-client'
 
 
 # Asset
