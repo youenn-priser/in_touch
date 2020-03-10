@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_10_101912) do
+ActiveRecord::Schema.define(version: 2020_03_10_104747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_101912) do
     t.bigint "client_id"
     t.bigint "user_id"
     t.string "title"
-    t.boolean "done"
+    t.boolean "done", default: false
     t.string "trello_board_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_101912) do
   create_table "sprints", force: :cascade do |t|
     t.bigint "project_id"
     t.string "title"
-    t.boolean "done"
+    t.boolean "done", default: false
     t.string "trello_list_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_101912) do
 
   create_table "user_stories", force: :cascade do |t|
     t.bigint "sprint_id"
-    t.boolean "done"
+    t.boolean "done", default: false
     t.string "title"
     t.string "trello_card_id"
     t.datetime "created_at", null: false
