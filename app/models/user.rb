@@ -12,6 +12,7 @@ class User < ApplicationRecord
       user_params[:avatar_url] = auth.dig('extra', 'raw_info', 'avatarUrl').present? ? auth.dig('extra', 'raw_info', 'avatarUrl') + '/170.png' : 'default-profile-picture.png'
       user_params[:profile_url] = auth.info.dig('urls', 'profile')
       user_params[:username] = auth.info['nickname']
+      user_params[:secret] = auth.credentials.secret
       user_params[:token] = auth.credentials.token
       user_params = user_params.to_h
 
