@@ -1,4 +1,7 @@
 .projects-container {
+  i {
+    color: #009CFF;
+  }
   .project-card {
     height: 416px;
     background-color: #ECF7FF;
@@ -7,11 +10,27 @@
   .project-card-new {
     height: 416px;
     background-color: #ECF7FF;
+    border: dashed #009CFF;
+    opacity: 0.4;
+    &:hover{
+      opacity: 0.8;
+    }
   }
 
   .project-cards {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .circle-bar-container {
+    bottom: 85px;
+    margin: 20px;
+    width: 200px;
+    height: 200px;
+  }
+
+  .fa-plus-circle {
+    font-size: 100px;
   }
 
 
