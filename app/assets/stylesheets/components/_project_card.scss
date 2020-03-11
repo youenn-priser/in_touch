@@ -4,13 +4,13 @@
   }
   .project-card {
     height: 416px;
-    background-color: #ECF7FF;
+    background-color: $background-blue;
   }
 
   .project-card-new {
     height: 416px;
-    background-color: #ECF7FF;
-    border: dashed #009CFF;
+    background-color: $background-blue;
+    border: dashed $main-blue;
     opacity: 0.4;
     &:hover{
       opacity: 0.8;
