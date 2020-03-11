@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
 
   def index
+    @projects = Project.all
   end
 
   def show
@@ -57,5 +58,5 @@ class ProjectsController < ApplicationController
     else
       render :new
     end
-  end
+
 end
