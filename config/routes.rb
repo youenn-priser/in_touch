@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   resources :projects, only: [:index, :show, :new, :create] do
     resources :reports, only: [:index, :new, :create]
   end
+
+  resource :trello_webhooks, only: %i(show create), defaults: { formats: :json }
 end
