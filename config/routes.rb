@@ -12,8 +12,6 @@ Rails.application.routes.draw do
     resources :reports, only: [:index, :new, :create]
   end
 
+  resource :trello_webhooks, only: %i(show create), defaults: { formats: :json }
   resources :clients, only: [:index, :new, :create]
-
-  get '/createboard', to: 'tests#createboard'
-  get '/getboard', to: 'tests#getboard'
 end

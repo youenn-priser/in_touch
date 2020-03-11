@@ -14,6 +14,9 @@ gem 'redis'
 gem 'omniauth-trello'
 gem 'rest-client'
 
+# Webhook
+gem 'trello_webhook'
+
 
 # Asset
 gem 'autoprefixer-rails'
