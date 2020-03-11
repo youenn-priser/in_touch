@@ -1,0 +1,23 @@
+<div class="container projects-container bg-white mt-4">
+  <h1>Projects</h1>
+  <div class="col">
+    <div class="row project-cards">
+      <% @projects.each do |project| %>
+        <div class="project-card m-4 p-4 d-flex flex-column justify-content-between">
+          <h2><%= project.title %></h2>
+          <div class="circle">
+            <p>progress</p>
+            <h3>45%</h3>
+          </div>
+          <div class="infos row">
+              <div class="col-6">nb of sprints</div>
+              <div class="col-6">date</div>
+          </div>
+        </div>
+      <% end %>
+        <div class="project-card-new m-4 p-4 d-flex justify-content-center">
+          <h2>Add a new project</h2>
+        </div>
+    </div>
+  </div>
+</div>
