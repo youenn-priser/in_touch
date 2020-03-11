@@ -1,22 +1,24 @@
 class CreateBoardService
 
-  def initialize(user, board_name)
-    @user = user
-    @board_name = board_name
+  def initialize(project)
+    @project = project
+    @user    = project.user
   end
 
   def call
-    board_id = create_board(@user, @board_name)
-    # board_id = create_board("my_new_board")
-    create_labels(board_id)
-    create_lists(board_id)
+    @board_id = create_board
+
+    create_labels
+    create_lists
+
+    return @board_id
   end
 
   private
 
-  def create_board(user, board_name)
+  def create_board
     params = {
-      name: board_name,
+      name: @project.title,
       defaultLabels: 'true',
       defaultLists: 'false',
       keepFromSource: 'none',
@@ -29,15 +31,16 @@ class CreateBoardService
       prefs_background: 'blue',
       prefs_cardAging: 'regular',
       key: ENV['TRELLO_API_KEY'],
-      token: user.token
+      token: @user.token
     }
 
     response = RestClient.post "https://api.trello.com/1/boards", params
     JSON.parse(response.body)["id"]
   end
 
-  def create_lists(board_id, list_name = "")
-    list_names = ["Done", "To deploy", "Waiting for client", "To review/debug", "In Progress", "To Do", "Sprint2", "Sprint1"]
+  def create_lists(list_name = "")
+    list_names = ["Done", "To deploy", "Waiting for client", "To review/debug", "In Progress", "To Do"]
+    list_names += sprint_names
 
     list_names.each do |list_name|
       params = {
@@ -47,25 +50,39 @@ class CreateBoardService
         token: @user.token
       }
 
-      response = RestClient.post "https://api.trello.com/1/boards/#{board_id}/lists", params
-      # puts response.body
+      response = RestClient.post "https://api.trello.com/1/boards/#{@board_id}/lists", params
+      list_id = JSON.parse(response.body)["id"]
+
+      @project.sprints.create!(
+        title: list_name,
+        trello_list_id: list_id
+      )
     end
   end
 
-  def create_labels(board_id)
-    label_names = {"Sprint2": "black", "Sprint1": "pink"}
+  def create_labels
+    colors = %w[green yellow orange red purple blue turquoise pink black]
 
-    label_names.each do |label_name, label_color|
+    sprint_names.each_with_index do |label_name, index|
       params = {
-        name: label_name,
-        color: label_color,
-        key: ENV['TRELLO_API_KEY'],
+        name:  label_name,
+        color: colors[index],
+        key:   ENV['TRELLO_API_KEY'],
         token: @user.token
       }
 
-      response = RestClient.post "https://api.trello.com/1/boards/#{board_id}/labels", params
+      response = RestClient.post "https://api.trello.com/1/boards/#{@board_id}/labels", params
       # puts response.read_body
     end
   end
 
+  def sprint_names
+    names = []
+
+    @project.number_of_sprints.times do |index|
+      names << "Sprint #{index + 1}"
+    end
+
+    return names
+  end
 end
