@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   devise_scope :user do
@@ -12,4 +13,5 @@ Rails.application.routes.draw do
   end
 
   resource :trello_webhooks, only: %i(show create), defaults: { formats: :json }
+  resources :clients, only: [:index, :new, :create]
 end
