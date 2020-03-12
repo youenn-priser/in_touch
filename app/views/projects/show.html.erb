@@ -19,7 +19,7 @@
     <div class="project-card-buttons col-3 d-flex flex-column justify-content-between py-4">
       <div class="btn">send recap</div>
       <div class="btn">Recap history</div>
-      <div class="btn">Go to Trello</div>
+      <div class="btn"><%= link_to 'Go to Trello', @project.trello_board_url, target: '_blank' %></div>
     </div>
   </div>
 </div>
