@@ -3,7 +3,7 @@ class ProjectProgressService
     @project = project
   end
 
-  def calcul
+  def call
     #moyenne % d'avancement du projet general= (nbr de user story done * le poids) sur / (la somme du nombre de user story * le poids)
 
     tasks = @project.tasks.count
@@ -26,7 +26,7 @@ class ProjectProgressService
     weight_task_done_total = tasks_done_weight_one + tasks_done_weight_three + tasks_done_weight_five
     # calculer poids des tasks done
 
-    progress = (100 * weight_task_done_total) / weight_total
+    progress = weight_total.positive? ? ((100 * weight_task_done_total) / weight_total) : 0
 
   end
 end

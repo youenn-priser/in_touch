@@ -1,5 +1,4 @@
 class GetCardsFromTrello
-
   def initialize(user, board_id)
     @board_id = board_id
     @user = user

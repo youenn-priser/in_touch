@@ -4,7 +4,7 @@ class UserStoryProgressService
     @tasks = @user_story.tasks
   end
 
-  def calcul
+  def call
     repartition = {}
     repartition[:done]               = @tasks.where(current_status: "done").count
     repartition[:to_deploy]          = @tasks.where(current_status: "to deploy").count

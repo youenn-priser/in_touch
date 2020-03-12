@@ -18,6 +18,10 @@ gem 'rest-client'
 gem 'ruby-trello'
 gem 'trello_webhook'
 
+# Use for background job
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
+
 
 # Asset
 gem 'autoprefixer-rails'
