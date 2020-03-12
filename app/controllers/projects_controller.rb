@@ -49,7 +49,7 @@ class ProjectsController < ApplicationController
       #create trello dashboard
       @board = CreateBoard.new(@project)
       @board_id = @board.call
-
+      CreateTrelloWebhookJob.perform_later(@project.id)
       # assign trello board id to project
       # @project.trello_board_id = @board_id
 
