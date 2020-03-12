@@ -51,7 +51,7 @@ class ProjectsController < ApplicationController
       @board_id = @board.call
 
       # assign trello board id to project
-      @project.trello_board_id = @board_id
+      # @project.trello_board_id = @board_id
 
       redirect_to project_path(@project)
     else
