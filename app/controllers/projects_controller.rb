@@ -47,8 +47,7 @@ class ProjectsController < ApplicationController
 
     if @project.save
       #create trello dashboard
-      # @board = CreateBoardService.new(current_user, params[:project_title])
-      @board = CreateBoardService.new(@project)
+      @board = CreateBoard.new(@project)
       @board_id = @board.call
 
       # assign trello board id to project
