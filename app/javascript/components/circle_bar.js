@@ -3,18 +3,24 @@
 import ProgressBar from 'progressbar.js';
 
 const initCircleBar = () => {
-  const container = document.querySelector('.circle-bar-container');
-  const bar = new ProgressBar.Circle(container, {
-    strokeWidth: 8,
-    easing: 'easeInOut',
-    duration: 1400,
-    color: '#72C1F9',
-    trailColor: '#645988',
-    trailWidth: 8,
-    svgStyle: null
+  const containers = document.querySelectorAll('.circle-bar-container');
+  containers.forEach((container) => {
+
+    const progress = Number.parseInt(container.firstElementChild.value) / 100;
+
+    const bar = new ProgressBar.Circle(container, {
+      strokeWidth: 8,
+      easing: 'easeInOut',
+      duration: 1400,
+      color: '#72C1F9',
+      trailColor: '#645988',
+      trailWidth: 8,
+      svgStyle: null
+    });
+
+    bar.animate(progress);  // Number from 0.0 to 1.0
   });
 
-  bar.animate(0.7);  // Number from 0.0 to 1.0
 }
 
 export { initCircleBar };
