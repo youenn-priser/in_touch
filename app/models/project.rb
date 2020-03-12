@@ -10,5 +10,4 @@ class Project < ApplicationRecord
 
   validates :title, presence: true, uniqueness: { scope: :client_id }
   validates :trello_board_id, uniqueness: true, allow_nil: true
-
 end

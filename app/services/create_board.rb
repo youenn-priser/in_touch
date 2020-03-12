@@ -12,7 +12,6 @@ class CreateBoard
 
     create_labels
     create_lists
-    create_webhook
 
     return @board_id
   end

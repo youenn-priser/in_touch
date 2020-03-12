@@ -1,9 +1,10 @@
 Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
 
-# Trello webhooks
+# Trello webhooks corresponding fields
+
+trello_board_id = payload['model']['id']
 
 ## Card creation
-trello_board_id = payload[:model][:id]
 
 h = {"model"=>{"id"=>"5e69035202fc7b70ef88da61", "name"=>"test board", "desc"=>"", "descData"=>nil, "closed"=>false, "idOrganization"=>nil, "idEnterprise"=>nil, "pinned"=>false, "url"=>"https://trello.com/b/A0i2XL6S/test-board", "shortUrl"=>"https://trello.com/b/A0i2XL6S", "prefs"=>{"permissionLevel"=>"private", "hideVotes"=>false, "voting"=>"disabled", "comments"=>"members", "invitations"=>"members", "selfJoin"=>true, "cardCovers"=>true, "isTemplate"=>false, "cardAging"=>"regular", "calendarFeedEnabled"=>false, "background"=>"blue", "backgroundImage"=>nil, "backgroundImageScaled"=>nil, "backgroundTile"=>false, "backgroundBrightness"=>"dark", "backgroundColor"=>"#0079BF", "backgroundBottomColor"=>"#0079BF", "backgroundTopColor"=>"#0079BF", "canBePublic"=>true, "canBeEnterprise"=>true, "canBeOrg"=>true, "canBePrivate"=>true, "canInvite"=>true}, "labelNames"=>{"green"=>"", "yellow"=>"", "orange"=>"", "red"=>"", "purple"=>"", "blue"=>"", "sky"=>"", "lime"=>"", "pink"=>"", "black"=>""}}, "action"=>{"id"=>"5e6904d148d0bd5dbff50744", "idMemberCreator"=>"5e15f0988d06c5602566b8a4", "data"=>{"card"=>{"id"=>"5e6904d148d0bd5dbff5073c", "name"=>"Test autre card", "idShort"=>2, "shortLink"=>"4ku2s6o4"}, "list"=>{"id"=>"5e690356e77a07361d33fc5a", "name"=>"Sprint1"}, "board"=>{"id"=>"5e69035202fc7b70ef88da61", "name"=>"test board", "shortLink"=>"A0i2XL6S"}}, "type"=>"createCard", "date"=>"2020-03-11T15:33:37.345Z", "limits"=>{}, "display"=>{"translationKey"=>"action_create_card", "entities"=>{"card"=>{"type"=>"card", "id"=>"5e6904d148d0bd5dbff5073c", "shortLink"=>"4ku2s6o4", "text"=>"Test autre card"}, "list"=>{"type"=>"list", "id"=>"5e690356e77a07361d33fc5a", "text"=>"Sprint1"}, "memberCreator"=>{"type"=>"member", "id"=>"5e15f0988d06c5602566b8a4", "username"=>"youennpriser1", "text"=>"Youenn PRISER"}}}, "memberCreator"=>{"id"=>"5e15f0988d06c5602566b8a4", "activityBlocked"=>false, "avatarHash"=>"19134595ae40f2c5271054102acba78f", "avatarUrl"=>"https://trello-members.s3.amazonaws.com/5e15f0988d06c5602566b8a4/19134595ae40f2c5271054102acba78f", "fullName"=>"youenn.priser", "idMemberReferrer"=>nil, "initials"=>"Y", "nonPublic"=>{}, "nonPublicAvailable"=>true, "username"=>"youennpriser1"}}}
 
