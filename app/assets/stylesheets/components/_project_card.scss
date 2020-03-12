@@ -1,6 +1,14 @@
 .projects-container {
   i {
-    color: #009CFF;
+    color: $main-blue;
+  }
+  .project-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .card-link:hover {
+    text-decoration: none;
   }
   .project-card {
     height: 416px;
@@ -8,6 +16,7 @@
   }
 
   .project-card-new {
+    text-decoration: none;
     height: 416px;
     background-color: $background-blue;
     border: dashed $main-blue;
@@ -17,10 +26,6 @@
     }
   }
 
-  .project-cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-  }
 
   .circle-bar-container {
     bottom: 85px;
