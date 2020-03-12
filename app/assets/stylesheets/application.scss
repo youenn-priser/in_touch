@@ -11,3 +11,12 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+.main-container {
+  display: flex;
+}
+
+.page-content {
+  display: flex;
+  flex-direction: column;
+}
