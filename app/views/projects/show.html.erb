@@ -1,0 +1,25 @@
+<div class="container current-project bg-white mt-4">
+  <div class="project-card rounded row">
+    <div class="project-card-infos col-6">
+      <h2><%= @project.title %></h2>
+      <h3><%= @project.client.company %></h3>
+      <h3><%= @project.client.last_name %> <%= @project.client.first_name %></h3>
+      <p>last contact : Mail sent on 23/04/2019</p>
+    </div>
+
+    <div class="project-card-progress col-3">
+      <div class="circle-bar-container position-absolute">
+        <input type="hidden" value="<%= ProjectProgressService.new(@project).call %>">
+      </div>
+      <div class="project-progress">
+        <h3><%= ProjectProgressService.new(@project).call %>%</h3>
+      </div>
+    </div>
+
+    <div class="project-card-buttons col-3 d-flex flex-column justify-content-between py-4">
+      <div class="btn">send recap</div>
+      <div class="btn">Recap history</div>
+      <div class="btn">Go to Trello</div>
+    </div>
+  </div>
+</div>
