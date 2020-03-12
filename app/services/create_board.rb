@@ -6,9 +6,12 @@ class CreateBoard
   end
 
   def call
-    @board_id = create_board
+    response = create_board
+    @board_id = response[:id]
+    @board_url = response[:url]
 
     @project.update(trello_board_id: @board_id)
+    @project.update(trello_board_url: @board_url)
 
     create_labels
     create_lists
@@ -37,7 +40,9 @@ class CreateBoard
     }
 
     response = RestClient.post "https://api.trello.com/1/boards", params
-    JSON.parse(response.body)["id"]
+    id  = JSON.parse(response.body)["id"]
+    url = JSON.parse(response.body)["url"]
+    return {id: id, url: url}
   end
 
   def create_lists
