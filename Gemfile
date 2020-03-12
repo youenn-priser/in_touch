@@ -15,6 +15,7 @@ gem 'omniauth-trello'
 gem 'rest-client'
 
 # Webhook
+gem 'ruby-trello'
 gem 'trello_webhook'
 
 
