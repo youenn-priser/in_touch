@@ -90,42 +90,6 @@ class CreateBoard
     end
   end
 
-  def create_webhook
-    callback_url = "http://#{ENV['DOMAIN']}/trello_webhooks"
-
-    params = {
-      idModel: @board_id,
-      callbackURL: callback_url,
-      description: "InTouch board webhook",
-      active: true,
-      key: ENV['TRELLO_API_KEY'],
-      token: @user.token
-    }
-
-    RestClient.post "https://api.trello.com/1/webhooks/", params
-    # base_url = "https://api.trello.com/1/webhooks/"
-    # query_string = Rack::Utils.build_query(params)
-
-    # webhook_creation_url = "#{base_url}?#{query_string}"
-
-    # begin
-    #   binding.pry
-    #   RestClient.post(webhook_creation_url, {}, {})
-    # rescue RestClient::BadRequest => e
-    #   binding.pry
-    # end
-
-
-    # from 'trello' gem
-    # webhook = Trello::Webhook.new
-
-    # webhook.description  = "InTouch board webhook"
-    # webhook.id_model     = @board_id
-    # webhook.callback_url = webhook_url
-    # webhook.active       = true
-    # webhook.save
-  end
-
   def sprint_names
     names = []
 
