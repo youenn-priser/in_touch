@@ -78,7 +78,10 @@ class CreateBoard
   def create_labels
     colors = %w[green yellow orange red purple blue turquoise pink black]
 
-    sprint_names.each_with_index do |label_name, index|
+    label_names = ["weight 1", "weight 2", "weight 3"]
+    labels = sprint_names + label_names
+    labels.each_with_index do |label_name, index|
+
       params = {
         name:  label_name,
         color: colors[index],
