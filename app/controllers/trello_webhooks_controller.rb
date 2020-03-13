@@ -10,13 +10,14 @@ class TrelloWebhooksController < ActionController::Base
     p payload
 
     change       = payload['action']['display']['translationKey']
-    card_id      = payload['action']['data']['card']['id']
-    new_status = payload['action']['display']['entities']['listAfter']['text']
+    p card_id      = payload['action']['data']['card']['id']
+    p new_status = payload['action']['display']['entities']['listAfter']['text'].downcase
     #TODO: Depending on the card List, update task current_status
     # ["Done", "To deploy", "Waiting for client", "To review/debug", "In progress", "To do", "Sprint"]
     # Si la card est bougée "action_"
     if change == "action_move_card_from_list_to_list"
       targeted_task = Task.find_by(trello_card_id: card_id)
+      p targeted_task
       targeted_task.update(current_status: new_status)
     end
   end
@@ -26,18 +27,18 @@ class TrelloWebhooksController < ActionController::Base
     puts "Payload is triggered by '#create_card' =>"
     p payload
 
-    list_name    = payload['action']['data']['list']['name']
+    list_name    = payload['action']['data']['list']['name'].downcase
     list_id      = payload['action']['data']['list']['id']
     card_name    = payload['action']['data']['card']['name']
     card_id      = payload['action']['data']['card']['id']
     short_link   = payload['action']['data']['card']['shortLink']
 
-    if list_name == 'To do'
+    if list_name == 'to do'
       # task.new(user_story_id: , weight: , title: , current_status: 'To do', trello_card_id: )
-      Task.create!(title: card_name, current_status: 'To do', trello_card_id: card_id)
+      Task.create!(title: card_name, current_status: 'to do', trello_card_id: card_id)
     elsif list_name.split(' ').include?('Sprint')
       # UserStory.create(sprint_id: , done: false, title: ,trello_card_id: , trello_card_short_link:)
-      sprint = Sprint.where(trello_list_id: list_id)[0]
+      sprint = Sprint.find_by(trello_list_id: list_id)
       UserStory.create(sprint: sprint, title: card_name ,trello_card_id: card_id, trello_card_short_link: short_link)
     end
     # TODO: Une card est créée:
