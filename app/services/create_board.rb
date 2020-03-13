@@ -46,7 +46,7 @@ class CreateBoard
   end
 
   def create_lists
-    list_names = ["Done", "To deploy", "Waiting for client", "To review/debug", "In Progress", "To Do"]
+    list_names = ["Done", "To deploy", "Waiting for client", "To review/debug", "In progress", "To do"]
 
     list_names.each do |list_name|
       create_list(list_name)
