@@ -32,18 +32,26 @@
 
   </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <div class="sprint-container">
+      <% @project.sprints.first.user_stories.each do |user_story| %>
+      <div class="user-story-card rounded shadow-sm p-5 m-2">
+        <div class="row">
+          <div class="col-9 ">
+            <h5><%= user_story.title %></h5>
+          </div>
+          <div class="col-3">
+            <% if user_story.done %>
+              <div class="d-flex justify-content-center align-items-center">
+                <i class="fas fa-tasks"></i><p>Done</p>
+              </div>
+            <% else %>
+              <div class="d-flex justify-content-center align-items-center">
+                <i class="far fa-clock"></i> </p>To do</p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

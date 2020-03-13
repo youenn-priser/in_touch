@@ -1,0 +1,16 @@
+.sprint-container {
+  padding: 0;
+  color: $main-blue;
+  .user-story-card {
+  background-color: white;
+  padding: 5px;
+  margin: 2px;
+
+  p {
+    color: $home-blue;
+    margin-bottom: 0;
+    margin-left: 10px;
+  }
+
+  }
+}
