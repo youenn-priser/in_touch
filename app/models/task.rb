@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-  belongs_to :user_story
+  belongs_to :user_story, optional: true
 
   validates :title, presence: true
   validates :trello_card_id, uniqueness: true, allow_nil: true
