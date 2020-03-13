@@ -1,67 +1,71 @@
 <div class="container">
   <div class="row project-form">
     <div class="col-8">
-      <h1>Add a New project :</h1>
+      <div class="container">
 
-      <form action="/projects" method="post" class="project-form">
-        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-        <div class="project-info">
-          <label for="project_title">Title: </label>
-          <input type="text" name="project_title" id="project_title" required>
-        </div>
+        <h1>Add a New project :</h1>
 
-        <h3> Select a client </h3>
-
-        <div class="project-info">
-          <label for="project_client">Select a client: </label>
-          <select type="text" name="project_client" id="project_client">
-              <option value="">Default</option>
-            <% @clients.each do |client| %>
-              <option value="<%= client.id %>">
-                <%= client.first_name + ' ' + client.last_name %>
-              </option>
-            <% end %>
-          </select>
-        </div>
-
-        <h3> Or create one - <i class="fas fa-plus-circle"></i></h3>
-
-          <div class="row client-form <%= @plop ? '' : 'd-none' %>">
-            <h3>Enter new client infos:</h3>
-
-            <div class="client-info">
-              <label for="first_name">First name: </label>
-              <%= text_field_tag :client_first_name, params[:client_first_name] %>
-            </div>
-            <div class="client-info">
-              <label for="last_name">Last name: </label>
-              <%= text_field_tag :client_last_name, params[:client_last_name] %>
-            </div>
-            <div class="client-info">
-              <label for="company">Company: </label>
-              <%= text_field_tag :client_company, params[:client_company] %>
-            </div>
-            <div class="client-info">
-              <label for="phone-number">Phone number: </label>
-              <%= text_field_tag :client_phone_number, params[:client_phone_number] %>
-            </div>
-            <div class="client-info">
-              <label for="email">Email: </label>
-              <%= text_field_tag :client_email, params[:client_email] %>
-            </div>
+        <form action="/projects" method="post" class="project-form form-group">
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <div class="project-info">
+            <label for="project_title"><h5>Title</h5></label>
+            <input type="text" name="project_title" id="project_title" class= "form-control" required>
           </div>
 
-        <div class="project-info">
-          <label for="number_of_sprints">How many sprints your project include: </label>
-          <%= number_field_tag :number_of_sprints, params[:number_of_sprints] %>
-        </div>
+          <div class="project-info">
+            <label for="project_client"><h5>Select a client</h5></label>
+            <select type="text" name="project_client" id="project_client" class= "form-control">
+                <option value="">Default</option>
+              <% @clients.each do |client| %>
+                <option value="<%= client.id %>">
+                  <%= client.first_name + ' ' + client.last_name %>
+                </option>
+              <% end %>
+            </select>
+          </div>
+
+          <h3> Or create one - <i class="fas fa-plus-circle"></i></h3>
+
+            <div class="row form-group client-form <%= @plop ? '' : 'd-none' %>">
+              <div class="d-flex flex-column ">
+                <h3>Enter new client infos:</h3>
+
+                <div class="client-info">
+                  <label for="first_name"><h5>First name</h5></label>
+                  <%= text_field_tag :client_first_name, params[:client_first_name], class: "form-control" %>
+                </div>
+                <div class="client-info">
+                  <label for="last_name"><h5>Last name</h5></label>
+                  <%= text_field_tag :client_last_name, params[:client_last_name], class: "form-control" %>
+                </div>
+                <div class="client-info">
+                  <label for="company"><h5>Company</h5></label>
+                  <%= text_field_tag :client_company, params[:client_company], class: "form-control" %>
+                </div>
+                <div class="client-info">
+                  <label for="phone-number"><h5>Phone number</h5></label>
+                  <%= text_field_tag :client_phone_number, params[:client_phone_number], class: "form-control" %>
+                </div>
+                <div class="client-info">
+                  <label for="email"><h5>Email</h5></label>
+                  <%= text_field_tag :client_email, params[:client_email], class: "form-control" %>
+                </div>
+              </div>
+            </div>
+
+          <div class="project-info">
+            <label for="number_of_sprints"><h5>How many sprints your project include</h5></label>
+            <%= number_field_tag :number_of_sprints, params[:number_of_sprints], class: "form-control" %>
+          </div>
 
 
 
-        <input type="submit" value="Create project">
+          <input type="submit" value="Create project">
 
-        </div>
-      </form>
+          </div>
+        </form>
+      </div>
+
     </div>
   </div>
 </div>
