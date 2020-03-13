@@ -468,6 +468,133 @@ trello_board_id = payload['model']['id']
 }
 ```
 
+### Move a task from one list to antother ###
+```ruby
+task_move_status = {
+  "model"=>{
+    "id"=>"5e6b6958b29420631f87b5fe",
+    "name"=>"Test Rom You 2",
+    "desc"=>"",
+    "descData"=>nil,
+    "closed"=>false,
+    "idOrganization"=>nil,
+    "idEnterprise"=>nil,
+    "pinned"=>false,
+    "url"=>"https://trello.com/b/PqkCfVBK/test-rom-you-2",
+    "shortUrl"=>"https://trello.com/b/PqkCfVBK",
+    "prefs"=>{
+      "permissionLevel"=>"private",
+      "hideVotes"=>false,
+      "voting"=>"disabled",
+      "comments"=>"members",
+      "invitations"=>"members",
+      "selfJoin"=>true,
+      "cardCovers"=>true,
+      "isTemplate"=>false,
+      "cardAging"=>"regular",
+      "calendarFeedEnabled"=>false,
+      "background"=>"blue",
+      "backgroundImage"=>nil,
+      "backgroundImageScaled"=>nil,
+      "backgroundTile"=>false,
+      "backgroundBrightness"=>"dark",
+      "backgroundColor"=>"#0079BF",
+      "backgroundBottomColor"=>"#0079BF",
+      "backgroundTopColor"=>"#0079BF",
+      "canBePublic"=>true,
+      "canBeEnterprise"=>true,
+      "canBeOrg"=>true,
+      "canBePrivate"=>true,
+      "canInvite"=>true
+    },
+    "labelNames"=>{
+      "green"=>"",
+      "yellow"=>"",
+      "orange"=>"",
+      "red"=>"",
+      "purple"=>"",
+      "blue"=>"",
+      "sky"=>"",
+      "lime"=>"",
+      "pink"=>"",
+      "black"=>""
+    }
+  },
+  "action"=>{
+    "id"=>"5e6b6bd566954a63bb70c9bd",
+    "idMemberCreator"=>"5e15f0988d06c5602566b8a4",
+    "data"=>{
+      "old"=>{
+        "idList"=>"5e6b695a6e67dc7cedeea6ac"
+      },
+      "card"=>{
+        "idList"=>"5e6b695af1e8682df66cdec6",
+        "id"=>"5e6b6b16776b58669bf7a77b",
+        "name"=>"This a task 3",
+        "idShort"=>4,
+        "shortLink"=>"xoSwLAKC"
+      },
+      "board"=>{
+        "id"=>"5e6b6958b29420631f87b5fe",
+        "name"=>"Test Rom You 2",
+        "shortLink"=>"PqkCfVBK"
+      },
+      "listBefore"=>{
+        "id"=>"5e6b695a6e67dc7cedeea6ac",
+        "name"=>"To do"
+      },
+      "listAfter"=>{
+        "id"=>"5e6b695af1e8682df66cdec6",
+        "name"=>"In progress"
+      }
+    },
+    "type"=>"updateCard",
+    "date"=>"2020-03-13T11:17:41.293Z",
+    "limits"=>{},
+    "display"=>{
+      "translationKey"=>"action_move_card_from_list_to_list",
+      "entities"=>{
+        "card"=>{
+          "type"=>"card",
+          "idList"=>"5e6b695af1e8682df66cdec6",
+          "id"=>"5e6b6b16776b58669bf7a77b",
+          "shortLink"=>"xoSwLAKC",
+          "text"=>"This a task 3"
+        },
+        "listBefore"=>{
+          "type"=>"list",
+          "id"=>"5e6b695a6e67dc7cedeea6ac",
+          "text"=>"To do"
+        },
+        "listAfter"=>{
+          "type"=>"list",
+          "id"=>"5e6b695af1e8682df66cdec6",
+          "text"=>"In progress"
+        },
+        "memberCreator"=>{
+          "type"=>"member",
+          "id"=>"5e15f0988d06c5602566b8a4",
+          "username"=>"youennpriser1",
+          "text"=>"Youenn PRISER"
+        }
+      }
+    },
+    "memberCreator"=>{
+      "id"=>"5e15f0988d06c5602566b8a4",
+      "activityBlocked"=>false,
+      "avatarHash"=>"19134595ae40f2c5271054102acba78f",
+      "avatarUrl"=>"https://trello-members.s3.amazonaws.com/5e15f0988d06c5602566b8a4/19134595ae40f2c5271054102acba78f",
+      "fullName"=>"youenn.priser",
+      "idMemberReferrer"=>nil,
+      "initials"=>"Y",
+      "nonPublic"=>{},
+      "nonPublicAvailable"=>true,
+      "username"=>"youennpriser1"
+    }
+  }
+}
+```
+
 ## Update Card
 h = {"model"=>{"id"=>"5e69035202fc7b70ef88da61", "name"=>"test board", "desc"=>"", "descData"=>nil, "closed"=>false, "idOrganization"=>nil, "idEnterprise"=>nil, "pinned"=>false, "url"=>"https://trello.com/b/A0i2XL6S/test-board", "shortUrl"=>"https://trello.com/b/A0i2XL6S", "prefs"=>{"permissionLevel"=>"private", "hideVotes"=>false, "voting"=>"disabled", "comments"=>"members", "invitations"=>"members", "selfJoin"=>true, "cardCovers"=>true, "isTemplate"=>false, "cardAging"=>"regular", "calendarFeedEnabled"=>false, "background"=>"blue", "backgroundImage"=>nil, "backgroundImageScaled"=>nil, "backgroundTile"=>false, "backgroundBrightness"=>"dark", "backgroundColor"=>"#0079BF", "backgroundBottomColor"=>"#0079BF", "backgroundTopColor"=>"#0079BF", "canBePublic"=>true, "canBeEnterprise"=>true, "canBeOrg"=>true, "canBePrivate"=>true, "canInvite"=>true}, "labelNames"=>{"green"=>"", "yellow"=>"", "orange"=>"", "red"=>"", "purple"=>"", "blue"=>"", "sky"=>"", "lime"=>"", "pink"=>"", "black"=>""}}, "action"=>{"id"=>"5e6904863af4ed5a206fb353", "idMemberCreator"=>"5e15f0988d06c5602566b8a4", "data"=>{"old"=>{"idList"=>"5e690356e77a07361d33fc5a"}, "card"=>{"idList"=>"5e6903556194497a60ca05a6", "id"=>"5e6903caf89c13450d829e93", "name"=>"Test card webhoook", "idShort"=>1, "shortLink"=>"StoSU6vK"}, "board"=>{"id"=>"5e69035202fc7b70ef88da61", "name"=>"test board", "shortLink"=>"A0i2XL6S"}, "listBefore"=>{"id"=>"5e690356e77a07361d33fc5a", "name"=>"Sprint1"}, "listAfter"=>{"id"=>"5e6903556194497a60ca05a6", "name"=>"Sprint2"}}, "type"=>"updateCard", "date"=>"2020-03-11T15:32:22.198Z", "limits"=>{}, "display"=>{"translationKey"=>"action_move_card_from_list_to_list", "entities"=>{"card"=>{"type"=>"card", "idList"=>"5e6903556194497a60ca05a6", "id"=>"5e6903caf89c13450d829e93", "shortLink"=>"StoSU6vK", "text"=>"Test card webhoook"}, "listBefore"=>{"type"=>"list", "id"=>"5e690356e77a07361d33fc5a", "text"=>"Sprint1"}, "listAfter"=>{"type"=>"list", "id"=>"5e6903556194497a60ca05a6", "text"=>"Sprint2"}, "memberCreator"=>{"type"=>"member", "id"=>"5e15f0988d06c5602566b8a4", "username"=>"youennpriser1", "text"=>"Youenn PRISER"}}}, "memberCreator"=>{"id"=>"5e15f0988d06c5602566b8a4", "activityBlocked"=>false, "avatarHash"=>"19134595ae40f2c5271054102acba78f", "avatarUrl"=>"https://trello-members.s3.amazonaws.com/5e15f0988d06c5602566b8a4/19134595ae40f2c5271054102acba78f", "fullName"=>"youenn.priser", "idMemberReferrer"=>nil, "initials"=>"Y", "nonPublic"=>{}, "nonPublicAvailable"=>true, "username"=>"youennpriser1"}}}
 
