@@ -44,7 +44,16 @@ class TrelloWebhooksController < ActionController::Base
   def add_attachment_to_card(payload)
     puts "Payload is triggered by '#add_attachment_to_card' =>"
     p payload
+    task_card_name          = payload['action']['data']['card']['name']
+    task_card_id            = payload['action']['data']['card']['id']
+    user_story_short_link   = payload['action']['data']['card']['attachment']['url'].split('/')[-2]
+    p "short link is #{user_story_short_link}"
+
+    task       = Task.where(trello_card_id: task_card_id).first
+    user_story = UserStory.where(short_link: user_story_short_link).first
+    task.update(user_story: user_story)
   end
+
   def update_list(payload)
     puts "Payload is triggered by '#update_list' =>"
     p payload
@@ -54,6 +63,7 @@ class TrelloWebhooksController < ActionController::Base
     puts "Payload is triggered by '#add_label_to_card' =>"
     p payload
   end
+
   def remove_label_from_card(payload)
     puts "Payload is triggered by '#remove_label_from_card' =>"
     p payload
