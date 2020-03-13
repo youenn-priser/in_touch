@@ -18,20 +18,4 @@
     width: 180px;
     height: 180px;
   }
-
-  .btn-send {
-    color: white;
-    background-color: $main-blue;
-    border: solid 1px $main-blue;
-    font-family: $headers-font;
-    font-weight: bold;
-  }
-
-  .btn-history, .btn-trello {
-    color: $main-blue;
-    background-color: $background-blue;
-    border: solid 1px $main-blue;
-    font-family: $headers-font;
-    font-weight: bold;
-  }
 }
