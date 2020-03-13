@@ -8,7 +8,7 @@ class TrelloWebhooksController < ActionController::Base
     puts "Payload is triggered by '#update_card' =>"
     p payload
     #TODO: Depending on the card List, update task current_status
-    # ["Done", "To deploy", "Waiting for client", "To review/debug", "In Progress", "To Do", "Sprint"]
+    # ["Done", "To deploy", "Waiting for client", "To review/debug", "In progress", "To do", "Sprint"]
     # Si la card est bougée "action_"
   end
 
@@ -16,6 +16,21 @@ class TrelloWebhooksController < ActionController::Base
     # binding.pry
     puts "Payload is triggered by '#create_card' =>"
     p payload
+
+    list_name    = payload['action']['data']['list']['name']
+    list_id      = payload['action']['data']['list']['id']
+    card_name    = payload['action']['data']['card']['name']
+    card_id      = payload['action']['data']['card']['id']
+    short_link   = payload['action']['data']['card']['shortLink']
+
+    if list_name == 'To Do'
+      # task.new(user_story_id: , weight: , title: , current_status: 'To do', trello_card_id: )
+      Task.create!(title: card_name, current_status: 'To do', trello_card_id: card_id)
+    elsif list_name.split(' ').include?('Sprint')
+      # UserStory.create(sprint_id: , done: false, title: ,trello_card_id: , trello_card_short_link:)
+      sprint = Sprint.where(trello_list_id: list_id)
+      UserStory.create(sprint: sprint, title: card_name ,trello_card_id: card_id, trello_card_short_link: shortLink)
+    end
     # TODO: Une card est créée:
     # - check si la card est créée dans une "list" sprint => User Story
 
