@@ -27,7 +27,7 @@
 
 .dropdown-menu-center {
     right: auto;
-    left: 50%;
+    left: 20%;
     -webkit-transform: translate(-50%, 0);
     -o-transform: translate(-50%, 0);
     transform: translate(-50%, 0);
@@ -40,4 +40,10 @@
 
 .icon-color-menu {
   color: $main-blue;
+}
+
+.username {
+  &:hover {
+    background: $background-blue;
+  }
 }
