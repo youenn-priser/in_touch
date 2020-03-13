@@ -24,6 +24,15 @@
     background-color: $background-blue;
   }
 
+  .project-progress {
+    padding-top: 120px;
+  }
+
+  .infos {
+    position: relative;
+    bottom: 90px;
+  }
+
   .project-card-new {
     text-decoration: none;
     height: 416px;
@@ -36,10 +45,10 @@
   }
 
   .circle-bar-container {
-    bottom: 85px;
+    bottom: 130px;
     width: 200px;
     height: 200px;
-    margin-bottom: 25px;
+    margin-bottom: 0px;
   }
 
   .fa-plus-circle {
