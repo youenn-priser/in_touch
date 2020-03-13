@@ -19,13 +19,13 @@
               <h5 class="mt-2"><%= project.client.company %></h5>
             </div>
 
-            <div class="circle-bar-container position-absolute">
-              <input type="hidden" value="<%= ProjectProgressService.new(project).call %>">
-            </div>
 
             <div class="project-progress">
               <!--<p>progress</p>-->
               <h1><%= ProjectProgressService.new(project).call %>%</h1>
+            </div>
+            <div class="circle-bar-container position-relative">
+              <input type="hidden" value="<%= ProjectProgressService.new(project).call %>">
             </div>
 
             <div class="infos row w-100">
