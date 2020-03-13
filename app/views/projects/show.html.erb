@@ -28,22 +28,24 @@
     </div>
   </div>
 
-  <div class="sprint">
 
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <div class="nav sprint">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <% @project.sprints.each_with_index do |sprint, index| %>
+        <li class="nav-item">
+          <a class="nav-link <%= "active" if index.zero? %>" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+            aria-selected="true"><i class="fas fa-running"></i> <%= sprint.title %></a>
+        </li>
+      <% end %>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="tab">Raw denim you
+        probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master
+        cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro
+        keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip
+        placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi
+        qui.</div>
+    </div>
+    </div>
 
 </div>
