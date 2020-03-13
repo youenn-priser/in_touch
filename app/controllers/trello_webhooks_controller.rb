@@ -73,6 +73,22 @@ class TrelloWebhooksController < ActionController::Base
   def add_label_to_card(payload)
     puts "Payload is triggered by '#add_label_to_card' =>"
     p payload
+
+    card_id    = payload['action']['data']['card']['id']
+    label_name = payload['action']['data']['label']['name']
+
+
+    if label_name == "weight 1"
+      task = Task.find_by(trello_card_id: card_id)
+      task.update(weight: 1)
+    elsif label_name == "weight 3"
+      task = Task.find_by(trello_card_id: card_id)
+      task.update(weight: 3)
+    elsif label_name == "weight 5"
+      task = Task.find_by(trello_card_id: card_id)
+      task.update(weight: 5)
+    end
+
   end
 
   def remove_label_from_card(payload)
