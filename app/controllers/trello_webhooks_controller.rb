@@ -55,11 +55,12 @@ class TrelloWebhooksController < ActionController::Base
     p payload
     task_card_name          = payload['action']['data']['card']['name']
     task_card_id            = payload['action']['data']['card']['id']
-    user_story_short_link   = payload['action']['data']['card']['attachment']['url'].split('/')[-2]
+    user_story_short_link   = payload['action']['data']['attachment']['url'].split('/')[-2]
     p "short link is #{user_story_short_link}"
 
-    task       = Task.where(trello_card_id: task_card_id).first
-    user_story = UserStory.where(short_link: user_story_short_link).first
+    task       = Task.find_by(trello_card_id: task_card_id)
+    user_story = UserStory.find_by(trello_card_short_link: user_story_short_link)
+    p user_story
     task.update(user_story: user_story)
   end
 
