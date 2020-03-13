@@ -1,5 +1,5 @@
 const show_client_form = () => {
-  const add_client_button = document.querySelector('.project-form h3 i ');
+  const add_client_button = document.querySelector('.add-client-buton h3 i');
 
   const client_form = document.querySelector('.client-form');
 

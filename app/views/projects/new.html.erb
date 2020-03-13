@@ -1,32 +1,50 @@
-<div class="container">
-  <div class="row project-form">
-    <div class="col-8">
-      <div class="container">
+<div class="container form-container-new-project rounded p-3 mt-5 shadow">
+  <div class="row justify-content-center">
+    <h1>Add a New project <i class="fas fa-rocket"></i></h1>
+  </div>
 
-        <h1>Add a New project :</h1>
+  <div class="row mt-5">
+    <div class="col-6">
 
-        <form action="/projects" method="post" class="project-form form-group">
-          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-          <div class="project-info">
-            <label for="project_title"><h5>Title</h5></label>
-            <input type="text" name="project_title" id="project_title" class= "form-control" required>
-          </div>
+      <form action="/projects" method="post" class="project-form form-group">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <div class="project-info">
+          <label for="project_title"><h5>Title</h5></label>
+          <input type="text" name="project_title" id="project_title" class= "form-control" required>
+        </div>
 
-          <div class="project-info">
-            <label for="project_client"><h5>Select a client</h5></label>
-            <select type="text" name="project_client" id="project_client" class= "form-control">
-                <option value="">Default</option>
-              <% @clients.each do |client| %>
-                <option value="<%= client.id %>">
-                  <%= client.first_name + ' ' + client.last_name %>
-                </option>
-              <% end %>
-            </select>
-          </div>
+        <div class="project-info">
+          <label for="number_of_sprints"><h5 class="mt-2">Number of sprints</h5></label>
+          <%= number_field_tag :number_of_sprints, params[:number_of_sprints], class: "form-control" %>
+        </div>
+    </div>
 
-          <h3> Or create one - <i class="fas fa-plus-circle"></i></h3>
+    <div class="col-6">
+      <div class="project-info">
+        <label for="project_client"><h5>Client</h5></label>
+        <select type="text" name="project_client" id="project_client" class= "form-control mb-5">
+            <option value="">Default</option>
+          <% @clients.each do |client| %>
+            <option value="<%= client.id %>">
+              <%= client.first_name + ' ' + client.last_name %>
+            </option>
+          <% end %>
+        </select>
 
-            <div class="row form-group client-form <%= @plop ? '' : 'd-none' %>">
+        <div class="add-client-buton d-flex justify-content-center align-items-center">
+          <h5 class="mr-3"> Or create one </h5>
+          <h3><i class="fas fa-plus-circle"></i></h3>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+    <div class="row">
+
+        <div class="container m-5 justify-content-center">
+          <div class="form-group client-form <%= @plop ? '' : 'd-none' %>">
+              <hr>
               <div class="d-flex flex-column ">
                 <h3>Enter new client infos:</h3>
 
@@ -52,20 +70,15 @@
                 </div>
               </div>
             </div>
-
-          <div class="project-info">
-            <label for="number_of_sprints"><h5>How many sprints your project include</h5></label>
-            <%= number_field_tag :number_of_sprints, params[:number_of_sprints], class: "form-control" %>
-          </div>
-
-
-
-          <input type="submit" value="Create project">
-
-          </div>
-        </form>
-      </div>
+            </div>
 
     </div>
+
+  <div class="row justify-content-center mt-5">
+    <input type="submit" value="Create project" class="btn btn-primary">
+    </form>
   </div>
+
+    </div>
+
 </div>
