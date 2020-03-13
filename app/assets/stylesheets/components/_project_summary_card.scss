@@ -1,27 +1,5 @@
 .current-project {
 
-  h2 {
-    color: $btn-nav-h2-blue;
-    font-family: $headers-font;
-    font-size: 36px;
-    font-weight: bold;
-    letter-spacing: 2px;
-  }
-
-  h3 {
-    color: $h3-blue;
-    font-family: $headers-font;
-    font-size: 32px;
-    font-weight: bold;
-  }
-
-  p {
-    color: $black-p;
-    font-family: $body-font;
-    font-size: 15px;
-    font-weight: light;
-  }
-
   .contact, h4 {
     color: $main-blue;
     font-family: $headers-font;
@@ -33,10 +11,6 @@
     height: 280px;
     background-color: $background-blue;
   }
-
-  // .project-progress {
-  //   margin: auto;
-  // }
 
   .circle-bar-container {
     bottom: 15px;

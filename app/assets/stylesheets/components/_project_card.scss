@@ -1,4 +1,13 @@
 .projects-container {
+
+  h5 {
+    text-align: center;
+  }
+
+  h6 {
+    padding: 0px;
+  }
+
   i {
     color: $main-blue;
   }
@@ -26,27 +35,18 @@
     }
   }
 
-
   .circle-bar-container {
     bottom: 85px;
-    margin: 20px;
     width: 200px;
     height: 200px;
+    margin-bottom: 25px;
   }
 
   .fa-plus-circle {
     font-size: 100px;
   }
+}
 
-
-
-
-
-
-
-
-
-
-
-
+.h1-border {
+  padding-left: 25px;
 }

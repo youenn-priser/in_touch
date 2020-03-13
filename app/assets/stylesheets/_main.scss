@@ -1,0 +1,59 @@
+.content {
+  background-color: white;
+}
+
+.page-content {
+  background-color: white;
+}
+
+h1 {
+  color: $btn-nav-h2-blue;
+  font-family: $headers-font;
+  font-size: 38px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+h2 {
+  color: $btn-nav-h2-blue;
+  font-family: $headers-font;
+  font-size: 30px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+h3 {
+  color: $h3-blue;
+  font-family: $headers-font;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+h4 {
+  color: $main-blue;
+  font-family: $headers-font;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+h5 {
+  color: black;
+  font-family: $headers-font;
+  font-size: 18px;
+  font-weight: 300;
+  opacity: 0.7;
+}
+
+h6 {
+  color: $main-blue;
+  font-family: $headers-font;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+p {
+  color: $black-p;
+  font-family: $body-font;
+  font-size: 15px;
+  font-weight: light;
+}
