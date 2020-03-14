@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resource :trello_webhooks, only: %i(show create), defaults: { formats: :json }
   resources :clients, only: [:index, :new, :create]
-
+  # For the background jobs
   require "sidekiq/web"
   authenticate :user, lambda { |u| u.admin } do
     mount Sidekiq::Web => '/sidekiq'
