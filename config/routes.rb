@@ -6,7 +6,7 @@ Rails.application.routes.draw do
    delete 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
 
-  root to: 'projects#index'
+  root to: 'pages#home'
 
   resources :projects, only: [:index, :show, :new, :create] do
     resources :reports, only: [:index, :new, :create]
