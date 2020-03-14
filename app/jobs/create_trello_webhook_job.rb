@@ -1,5 +1,5 @@
 class CreateTrelloWebhookJob < ApplicationJob
-  queue_as :default
+  queue_as :webhook
 
   def perform(project_id)
     # Find the project trello_board_id
