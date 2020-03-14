@@ -1,7 +1,5 @@
 <div class="container current-project bg-white mt-4">
-  <div class="mb-3">
-    <%= link_to sanitize("<i class='fas fas fa-angle-double-left'></i> Back"), "/projects" %>
-  </div>
+
   <div class="project-card rounded row p-4 border shadow">
     <div class="project-card-infos col-6">
       <h1 class="mb-4"><%= @project.title %></h1>
@@ -50,7 +48,7 @@
                     <div class="col-3">
                       <% if user_story.done %>
                         <div class="d-flex justify-content-center align-items-center">
-                          <i class="fas fa-tasks"></i><p>Done</p>
+                          <i class="far fa-check-square"></i><p>Done</p>
                         </div>
                       <% else %>
                         <div class="d-flex justify-content-center align-items-center">

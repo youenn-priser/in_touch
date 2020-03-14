@@ -1,21 +1,39 @@
-<div class="container-sidebar">
-
-  <div class="sidebar">
-    <div class="logo">
-      <%= link_to projects_path do %>
-      <%= image_tag "intouch_simple_logo.png", alt: "Mon image", width: 100, height: 100  %>
-      <% end %>
-    </div>
-
-    <nav class="menu-nav">
-      <ul>
-        <div class="submenu">
-          <a href="/projects"><li class="menu-items <%= 'active' if current_page?(projects_path) %>">My projects</li></a>
-        </div>
-        <div class="submenu">
-          <a href="/projects/new"><li class="menu-items <%= 'active' if current_page?(new_project_path) %> ">Add a project</li></a>
-        </div>
-      </ul>
-    </nav>
+<div class="sidebar">
+  <div class="logo">
+    <%= link_to projects_path do %>
+    <%= image_tag "intouch_simple_logo.png", alt: "Mon image", width: 100, height: 100  %>
+    <% end %>
   </div>
+
+  <div class="session-login">
+    <ul>
+      <% if user_signed_in? %>
+        <li class="nav-item dropdown">
+          <%= image_tag current_user.avatar_url, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <div class="dropdown-menu dropdown-menu-center" aria-labelledby="navbarDropdown">
+            <div class="dropdown-item icon-color-menu username"><%= current_user.name %></div>
+            <%= link_to sanitize("<i class='fas fa-sign-out-alt icon-color-menu'></i> Log out"), destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+
+          </div>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <div class="btn btn-primary">
+            <%= link_to sanitize("<i class='fas fa-sign-in-alt icon-color-menu'></i> Login"), user_trello_omniauth_authorize_path, class: "nav-link" %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <nav class="menu-nav">
+    <ul>
+      <div class="submenu">
+        <a href="/projects"><li class="menu-items <%= 'active' if current_page?(projects_path) %>">My projects</li></a>
+      </div>
+      <div class="submenu">
+        <a href="/projects/new"><li class="menu-items <%= 'active' if current_page?(new_project_path) %> ">Add a project</li></a>
+      </div>
+    </ul>
+  </nav>
 </div>
