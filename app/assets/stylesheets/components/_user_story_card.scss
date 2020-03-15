@@ -1,16 +1,40 @@
-.sprint-container {
+.us-container {
   padding: 0;
   color: $main-blue;
-  .user-story-card {
-  background-color: white;
-  padding: 5px;
-  margin: 2px;
 
-  p {
-    color: $home-blue;
-    margin-bottom: 0;
-    margin-left: 10px;
+  .user-story-card {
+    background-color: white;
+    padding: 5px;
+    margin: 2px;
+
+    p, i {
+      color: $btn-nav-h2-blue;
+      margin-bottom: 0;
+      margin-left: 10px;
+      font-size: 20px;
+    }
+
+    .to-do {
+      p, i  {
+        color: $main-blue;
+        margin-bottom: 0;
+        margin-left: 10px;
+      }
+    }
+  }
+  .done {
+    background-color: $background-blue;
+    opacity: 0.8;
   }
 
+  .nav-link {
+    background-color: #EFEFEF;
+    color: black;
+    opacity: 0.9;
+    &.active {
+      background-color: white;
+      color: $btn-nav-h2-blue;
+    }
   }
 }
+

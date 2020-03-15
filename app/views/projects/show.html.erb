@@ -26,42 +26,44 @@
     </div>
   </div>
 
-  <div class="nav sprint">
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <div class="us-container">
+    <ul class="nav nav-tabs mt-5" id="myTab" role="tablist">
       <% @project.sprints.each_with_index do |sprint, index| %>
         <li class="nav-item">
-          <a class="nav-link <%= "active" if index.zero? %>" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
-            aria-selected="true"><i class="fas fa-running"></i> <%= sprint.title %></a>
-        </li>
+
+          <a class="nav-link <%= "active" if index.zero? %>" id="<%= sprint.title.gsub(/\s+/, "") %>-tab" data-toggle="tab" href="#<%= sprint.title.gsub(/\s+/, "") %>" role="tab" aria-controls="<%= sprint.title.gsub(/\s+/, "") %>" aria-selected="true"><%= sprint.title %></a>
+          </li>
+
       <% end %>
-    </ul>
-    <div class="tab-content" id="myTabContent">
-      <% @project.sprints.each_with_index do |sprint, index| %>
-        <div class="tab-pane fade show  <%= "active" if index.zero? %>" id="home" role="tabpanel" aria-labelledby="tab">
-          <% sprint.user_stories.each do |user_story| %>
-            <div class="sprint-container">
-                <div class="user-story-card rounded shadow-sm p-5 m-2">
-                  <div class="row">
-                    <div class="col-9 ">
-                      <h5><%= user_story.title %></h5>
-                    </div>
-                    <div class="col-3">
-                      <% if user_story.done %>
-                        <div class="d-flex justify-content-center align-items-center">
-                          <i class="far fa-check-square"></i><p>Done</p>
-                        </div>
-                      <% else %>
-                        <div class="d-flex justify-content-center align-items-center">
-                          <i class="far fa-clock"></i> </p>To do</p>
-                        </div>
-                      <% end %>
-                    </div>
+      </li>
+  </ul>
+
+  <div class="tab-content" id="myTabContent">
+    <% @project.sprints.each_with_index do |sprint, index| %>
+      <div class="tab-pane fade show <%= "active" if index.zero? %>" id="<%= sprint.title.gsub(/\s+/, "") %>" role="tabpanel" aria-labelledby="<%= sprint.title.gsub(/\s+/, "") %>-tab">
+        <% sprint.user_stories.each_with_index do |user_story, index| %>
+          <div class="user-story-card rounded shadow-sm p-5 m-2 <%= "done" if user_story.done %>">
+            <div class="row">
+              <div class="col-3">
+                <% if user_story.done %>
+                  <div class="d-flex justify-content-center align-items-center">
+                    <i class="far fa-check-square"></i> <p>Done</p>
                   </div>
-                </div>
+                <% else %>
+                  <div class="to-do d-flex justify-content-center align-items-center">
+                    <i class="far fa-clock"></i> <p>To do</p>
+                  </div>
+                <% end %>
+              </div>
+              <div class="col-9 ">
+                <h5><%= user_story.title %></h5>
+              </div>
             </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
   </div>
 </div>
