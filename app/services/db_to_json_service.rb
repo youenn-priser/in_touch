@@ -37,9 +37,9 @@ class DbToJsonService
 
   def project_to_hash(project)
     {
-      project_id: ,
-      done: ,
-      updated_at: ,
+      project_id: project.id,
+      done: project.done,
+      updated_at: project.updated_at,
     }
   end
 
