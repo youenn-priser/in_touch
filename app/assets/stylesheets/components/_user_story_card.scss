@@ -4,6 +4,7 @@
 
   .user-story-card {
     background-color: white;
+    border: 1px solid $main-blue;
     padding: 5px;
     margin: 2px;
 
@@ -23,13 +24,14 @@
     }
   }
   .done {
-    background-color: $background-blue;
+    background-color: rgba(0, 0, 0, 0.01);
+    border: 1px solid $btn-nav-h2-blue;
     opacity: 0.8;
   }
 
   .nav-link {
-    background-color: #EFEFEF;
-    color: black;
+    background-color: #white;
+    color: gray;
     opacity: 0.9;
     &.active {
       background-color: white;
