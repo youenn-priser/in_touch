@@ -31,7 +31,7 @@
       <% @project.sprints.each_with_index do |sprint, index| %>
         <li class="nav-item">
 
-          <a class="nav-link <%= "active" if index.zero? %>" id="<%= sprint.title.gsub(/\s+/, "") %>-tab" data-toggle="tab" href="#<%= sprint.title.gsub(/\s+/, "") %>" role="tab" aria-controls="<%= sprint.title.gsub(/\s+/, "") %>" aria-selected="true"><%= sprint.title %></a>
+          <a class="nav-link <%= "active" if index.zero? %>" id="<%= sprint.title.gsub(/\s+/, "") %>-tab" data-toggle="tab" href="#<%= sprint.title.gsub(/\s+/, "") %>" role="tab" aria-controls="<%= sprint.title.gsub(/\s+/, "") %>" aria-selected="true"> <i class="fas fa-running"></i> <%= sprint.title %></a>
           </li>
 
       <% end %>
