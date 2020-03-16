@@ -1,21 +1,61 @@
+// .current-project {
+
+//   .contact, h4 {
+//     color: $main-blue;
+//     font-family: $headers-font;
+//     font-weight: bold;
+//     font-size: 24px;
+//   }
+
+//   .project-card {
+//     height: 280px;
+//     background-color: $background-blue;
+//     padding: 5px;
+//     margin: 2px;
+//   }
+
+//   .circle-bar-container {
+//     bottom: 15px;
+//     margin: 20px;
+//     width: 180px;
+//     height: 180px;
+//   }
+// }
+
+.row-project {
+  margin-top: 40px;
+}
+
 .current-project {
 
   .contact, h4 {
     color: $main-blue;
     font-family: $headers-font;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 20px;
+  }
+
+   .contact, h3 {
+    font-family: $headers-font;
+    font-weight: bold;
+    font-size: 16px;
   }
 
   .project-card {
-    height: 280px;
     background-color: $background-blue;
+    padding: 5px;
+    margin: 2px;
+  }
+
+  .project-card-infos {
+    padding-top: 30px;
   }
 
   .circle-bar-container {
-    bottom: 15px;
-    margin: 20px;
-    width: 180px;
+    margin-bottom: 10px;
+    margin-left: 40px;
+    width: 160px;
     height: 180px;
   }
 }
+
