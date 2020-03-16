@@ -80,7 +80,7 @@
       <div class="tab-pane fade show <%= "active" if index.zero? %>" id="<%= sprint.title.gsub(/\s+/, "") %>" role="tabpanel" aria-labelledby="<%= sprint.title.gsub(/\s+/, "") %>-tab">
         <% sprint.user_stories.each_with_index do |user_story, index| %>
 
-        <a class ="us" href="#us<%= user_story.id %>" data-toggle="collapse" aria-expanded="false" aria-controls="us<%= user_story.id %>">
+        <a class ="us-card-link" href="#us<%= user_story.id %>" data-toggle="collapse" aria-expanded="false" aria-controls="us<%= user_story.id %>">
           <div class="user-story-card rounded shadow-sm p-5 mt-2 <%= "done" if user_story.done %>">
             <div class="row">
               <div class="col-3">
