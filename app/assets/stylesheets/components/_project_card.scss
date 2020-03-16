@@ -3,6 +3,7 @@
   .card-project-title {
     color: white;
     font-weight: bold;
+    font-size: 16px;
     letter-spacing: 1px;
     background-color: $btn-nav-h2-blue;
     border-top-left-radius: 4px;
@@ -57,6 +58,14 @@
 
   .buttons {
     height: 15%;
+    font-weight: bold;
+    font-size: 14px;
+    .card-link {
+      color: $grey-form;
+      &:hover {
+        color: $main-blue;
+      }
+    }
   }
 
   .circle-bar-container {
