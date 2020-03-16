@@ -48,7 +48,7 @@ class ProjectsController < ApplicationController
 
     if @project.save
       #create trello dashboard
-      @board = CreateBoard.new(@project)
+      @board = TrelloModule::CreateBoard.new(@project)
       @board_id = @board.call
       CreateTrelloWebhookJob.perform_later(@project.id)
       # assign trello board id to project
