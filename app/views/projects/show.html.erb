@@ -69,13 +69,34 @@
             <div class="rounded shadow-sm p-5 m-2">
               <div class="row">
                 <div class="col-6">
-                  <% user_story.tasks.each do |task| %>
-                    <ul>
+
+                    <ul class='list-unstyled'>
                       <li>
-                        <%= task.current_status %>
+                        <div class="div">
+                          <h2><i class="fas fa-comments"></i> Waiting for client callback</h2>
+                          <% user_story.tasks.where(current_status: "waiting client").each do |task| %>
+                            <ul>
+                              <li>
+                                <%= task.title %>
+                              </li>
+                            </ul>
+                          <% end %>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="div">
+                          <h2><i class="fas fa-user-clock"></i> Comming soon | to review</h2>
+                          <% user_story.tasks.where(current_status: "to review").each do |task| %>
+                            <ul>
+                              <li>
+                                <%= task.title %>
+                              </li>
+                            </ul>
+                          <% end %>
+                        </div>
                       </li>
                     </ul>
-                  <% end %>
+
                 </div>
                 <div class="col-6">
 
