@@ -34,7 +34,7 @@
     color: gray;
     opacity: 0.9;
     &.active {
-      background-color: white;
+      background-color: $background-blue;
       color: $btn-nav-h2-blue;
     }
   }
