@@ -1,39 +1,92 @@
 <div class="sidebar">
-  <div class="logo">
-    <%= link_to projects_path do %>
-    <%= image_tag "intouch_simple_logo.png", alt: "Mon image", width: 100, height: 100  %>
-    <% end %>
-  </div>
 
-  <div class="session-login">
-    <ul>
-      <% if user_signed_in? %>
-        <li class="nav-item dropdown">
-          <%= image_tag current_user.avatar_url, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-center" aria-labelledby="navbarDropdown">
-            <div class="dropdown-item icon-color-menu username"><%= current_user.name %></div>
-            <%= link_to sanitize("<i class='fas fa-sign-out-alt icon-color-menu'></i> Log out"), destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+  <div class="page-wrapper chiller-theme toggled">
+    <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+      <i class="fas fa-bars"></i>
+    </a>
+    <nav id="sidebar" class="sidebar-wrapper">
+      <div class="sidebar-content">
+        <div class="sidebar-brand">
+          <%= link_to projects_path do %>
+          <%= image_tag "logo.png", alt: "In touch agency logo", width: 225, height: 65  %>
+          <% end %>
+        </div>
 
-          </div>
-        </li>
+<!-- sidebar-personal-info  -->
+    <% if user_signed_in? %>
+      <div class="sidebar-header">
+        <div class="user-pic">
+           <%= image_tag current_user.avatar_url, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        </div>
+        <div class="user-info">
+          <span class="user-name">
+            <%= current_user.name %>
+          </span>
+          <span class="user-role">Space Web Agency</span>
+          <span class="user-status">
+            <i class="fa fa-circle"></i>
+            <span>Online</span>
+          </span>
+
+         <%= link_to sanitize("<i class='fas fa-sign-out-alt'></i> Log out"), destroy_user_session_path, method: :delete%>
+
+        </div>
+      </div>
+
+<!-- sidebar-menu  -->
+        <div class="sidebar-menu">
+          <ul>
+            <li class="header-menu">
+              <span>Dashboard</span>
+            </li>
+            <li>
+              <a href="/projects/">
+                <i class="fa fa-list-ul"></i>
+                <span>My projects</span>
+              </a>
+            </li>
+            <li>
+              <a href="/projects/new">
+                <i class="fas fa-rocket"></i>
+                <span>New project</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-users"></i>
+                <span>Clients</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+<!-- sidebar-footer  -->
+      <div class="sidebar-footer">
+        <a href="#">
+          <i class="fa fa-bell"></i>
+          <span class="badge badge-pill badge-warning notification">4</span>
+        </a>
+        <a href="#">
+          <i class="fa fa-envelope"></i>
+          <span class="badge badge-pill badge-success notification">2</span>
+        </a>
+        <a href="#">
+          <i class="fa fa-cog"></i>
+          <span class="badge-sonar"></span>
+        </a>
+      </div>
+
       <% else %>
         <li class="nav-item">
-          <div class="btn btn-primary">
-            <%= link_to sanitize("<i class='fas fa-sign-in-alt icon-color-menu'></i> Login"), user_trello_omniauth_authorize_path, class: "nav-link" %>
+          <div class="login container">
+            <div class="btn btn-show btn-block">
+              <%= link_to sanitize("<i class='fas fa-sign-in-alt'></i> Login"), user_trello_omniauth_authorize_path, class: "nav-link" %>
+            </div>
           </div>
         </li>
       <% end %>
-    </ul>
-  </div>
 
-  <nav class="menu-nav">
-    <ul>
-      <div class="submenu">
-        <a href="/projects"><li class="menu-items <%= 'active' if current_page?(projects_path) %>">My projects</li></a>
-      </div>
-      <div class="submenu">
-        <a href="/projects/new"><li class="menu-items <%= 'active' if current_page?(new_project_path) %> ">Add a project</li></a>
-      </div>
-    </ul>
-  </nav>
+    </nav>
+  </div>
 </div>
