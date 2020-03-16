@@ -30,12 +30,27 @@
   }
 
   .nav-link {
-    background-color: #white;
+    background-color: white;
     color: gray;
     opacity: 0.9;
     &.active {
       background-color: white;
       color: $btn-nav-h2-blue;
+    }
+  }
+
+  .us-collapse {
+    background-color: rgba(236, 247, 255, 0.3);
+  }
+
+  .us-card-link {
+    text-decoration: none;
+    &:hover .user-story-card {
+      border: 2px solid $main-blue;
+    }
+
+    &:hover .done {
+      border: 2px solid $btn-nav-h2-blue;
     }
   }
 }

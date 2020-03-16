@@ -43,8 +43,8 @@
       <div class="tab-pane fade show <%= "active" if index.zero? %>" id="<%= sprint.title.gsub(/\s+/, "") %>" role="tabpanel" aria-labelledby="<%= sprint.title.gsub(/\s+/, "") %>-tab">
         <% sprint.user_stories.each_with_index do |user_story, index| %>
 
-        <a href="#us<%= user_story.id %>" data-toggle="collapse" aria-expanded="false" aria-controls="us<%= user_story.id %>">
-          <div class="user-story-card rounded shadow-sm p-5 m-2 <%= "done" if user_story.done %>">
+        <a class ="us" href="#us<%= user_story.id %>" data-toggle="collapse" aria-expanded="false" aria-controls="us<%= user_story.id %>">
+          <div class="user-story-card rounded shadow-sm p-5 mt-2 <%= "done" if user_story.done %>">
             <div class="row">
               <div class="col-3">
                 <% if user_story.done %>
@@ -66,39 +66,106 @@
           </div>
         </a>
         <div class="collapse" id="us<%= user_story.id %>">
-            <div class="rounded shadow-sm p-5 m-2">
+            <div class="rounded shadow-sm p-5 m-2 us-collapse">
               <div class="row">
-                <div class="col-6">
+                <div class="col-6 justify-content-arround">
 
                     <ul class='list-unstyled'>
-                      <li>
-                        <div class="div">
-                          <h2><i class="fas fa-comments"></i> Waiting for client callback</h2>
-                          <% user_story.tasks.where(current_status: "waiting client").each do |task| %>
-                            <ul>
-                              <li>
-                                <%= task.title %>
-                              </li>
-                            </ul>
-                          <% end %>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="div">
-                          <h2><i class="fas fa-user-clock"></i> Comming soon | to review</h2>
-                          <% user_story.tasks.where(current_status: "to review").each do |task| %>
-                            <ul>
-                              <li>
-                                <%= task.title %>
-                              </li>
-                            </ul>
-                          <% end %>
-                        </div>
-                      </li>
+                      <div class="row">
+                        <li>
+                          <div class="div m-2">
+                            <h4 style="color: #034A9E"><i class="fas fa-comments"></i> Waiting for client callback</h4>
+                              <% if user_story.tasks.where(current_status: "waiting client").count == 0 %>
+                                <p>No tasks need client feedback</p>
+                              <% else %>
+                                <% user_story.tasks.where(current_status: "waiting client").each do |task| %>
+                                  <ul>
+                                    <li>
+                                      <p><%= task.title %></p>
+                                    </li>
+                                  </ul>
+                                <% end %>
+                              <% end %>
+                          </div>
+                        </li>
+                      </div>
+                      <div class="row">
+                        <li>
+                          <div class="div m-2">
+                            <h4 style="color: #034A9E"><i class="fas fa-user-clock"></i> Comming soon | to review</h4>
+                            <% if user_story.tasks.where(current_status: "to review").count == 0 %>
+                              <p>All tasks are "in progress" or "done" for this User story</p>
+                            <% else %>
+                              <% user_story.tasks.where(current_status: "to review").each do |task| %>
+                                <ul>
+                                  <li>
+                                    <p><%= task.title %></p>
+                                  </li>
+                                </ul>
+                              <% end %>
+                            <% end %>
+                          </div>
+                        </li>
+                      </div>
                     </ul>
 
                 </div>
                 <div class="col-6">
+                  <div class="row justify-content-center" style="font-size: 20px"> Total tasks: <%= user_story.tasks.count %> </div>
+                  <canvas id="usChart<%= user_story.id %>"></canvas>
+                  <script>
+                  var ctx = document.getElementById('usChart<%= user_story.id %>').getContext('2d');
+                  // global option
+                  Chart.defaults.global.defaultFontFamily = 'Roboto' ;
+                  Chart.defaults.global.defaultFontSize = 15;
+                  Chart.defaults.global.defaultFontColor = '#034A9E';
+
+                  var myChart = new Chart(ctx, {
+                      type: 'bar',
+                      data: {
+                        labels: ['To do', 'In progress', 'Waiting for client', 'To review', 'To deploy', 'Done'],
+                        datasets: [{
+                          label: 'Tasks',
+                          data: [
+                              <%=  user_story.tasks.where(current_status: "to do").count %>,
+                              <%=  user_story.tasks.where(current_status: "in progress").count %>,
+                              <%=  user_story.tasks.where(current_status: "waiting client").count %>,
+                              <%=  user_story.tasks.where(current_status: "to review/debug").count %>,
+                              <%=  user_story.tasks.where(current_status: "to deploy").count %>,
+                              <%=  user_story.tasks.where(current_status: "done").count %>,
+                          ],
+                          backgroundColor: 'rgb(180, 202, 225)',
+                          borderColor: 'rgb(3, 74, 158)',
+                          borderWidth: 1,
+                      }]
+                      },
+                      gridLines: {
+                        display: false,
+                      },
+                      options: {
+                        legend: {
+                          display: false,
+                        },
+                        scales: {
+                                xAxes: [{
+
+                                    gridLines: {
+                                        color: '#034A9E',
+                                        drawOnChartArea: false
+                                    }
+                                }],
+                                yAxes: [{
+                                    gridLines: {
+                                        color: '#034A9E',
+                                        drawOnChartArea: false
+                                    }
+                                }]
+                        }
+                      },
+
+
+                  });
+                  </script>
 
                 </div>
               </div>
