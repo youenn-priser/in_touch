@@ -10,10 +10,10 @@
 
     <div class="project-card-progress col-3">
       <div class="circle-bar-container position-absolute">
-        <input type="hidden" value="<%= ProjectProgressService.new(@project).call %>">
+        <input type="hidden" value="<%= ProgressModule::ProjectProgressService.new(@project).call %>">
       </div>
       <div class="project-progress d-flex flex-column justify-content-center align-items-center h-100">
-        <h3><%= ProjectProgressService.new(@project).call %>%</h3>
+        <h3><%= ProgressModule::ProjectProgressService.new(@project).call %>%</h3>
       </div>
     </div>
 
