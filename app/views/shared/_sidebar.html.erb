@@ -27,9 +27,6 @@
             <i class="fa fa-circle"></i>
             <span>Online</span>
           </span>
-
-         <%= link_to sanitize("<i class='fas fa-sign-out-alt'></i> Log out"), destroy_user_session_path, method: :delete%>
-
         </div>
       </div>
 
@@ -57,6 +54,24 @@
                 <span>Clients</span>
               </a>
             </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-file-invoice"></i>
+                <span>Invoices</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-euro-sign"></i>
+                <span>Turnover</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-percentage"></i>
+                <span>Statistics</span>
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -74,6 +89,9 @@
         <a href="#">
           <i class="fa fa-cog"></i>
           <span class="badge-sonar"></span>
+        </a>
+        <a href="#">
+          <span><%= link_to sanitize("<i class='fas fa-sign-out-alt'></i> Log out"), destroy_user_session_path, method: :delete%></span>
         </a>
       </div>
 
