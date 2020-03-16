@@ -19,7 +19,7 @@
             <div class="w-100 d-flex align-items-center card-project-title"><%= project.title %></div>
             <div class="project-progress d-flex align-items-center flex-column">
               <h1><%= ProgressModule::ProjectProgressService.new(project).call %>%</h1>
-              <h2><i class="fas fa-running"></i> 1/<%= project.sprints.count %></h2>
+              <h2><i class="fas fa-running"></i> <%= ProgressModule::CurrentSprintService.new(project).call %>/<%= project.sprints.count %></h2>
             </div>
 
             <div class="circle-bar-container">

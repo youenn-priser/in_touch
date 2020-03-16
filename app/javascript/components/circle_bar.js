@@ -9,12 +9,12 @@ const initCircleBar = () => {
     const progress = Number.parseInt(container.firstElementChild.value) / 100;
 
     const bar = new ProgressBar.Circle(container, {
-      strokeWidth: 8,
+      strokeWidth: 14,
       easing: 'easeInOut',
       duration: 1400,
       color: '#72C1F9',
-      trailColor: '#645988',
-      trailWidth: 8,
+      trailColor: '#ECF7FF',
+      trailWidth: 14,
       svgStyle: null
     });
 
