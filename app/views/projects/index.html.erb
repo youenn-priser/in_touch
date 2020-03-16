@@ -32,21 +32,19 @@
                 <!-- <div class="col-10 pl-2 pr-0"><h6>Le wagon company limited </h6></div> -->
                 <div class="col-10 pl-2 pr-0"><h6><%= project.client.company %></h6></div>
               </div>
-    <!--           <div class="row align-items-end">
-                <div class="col-2 pl-2 pr-0 pl-2 pr-0 text-center"><i class="fas fa-running"></i></div>
-                <div class="col-10 pl-2 pr-0"><h6>Sprint 1/<%= project.sprints.count %></h6></div>
-              </div> -->
-              <div class="row align-items-end">
+
+              <div class="row align-items-end pt-2">
                 <div class="col-2 pl-2 pr-0 text-center"><i class="fas fa-calendar-check"></i></div>
                 <div class="col-10 pl-2 pr-0"><h6>01/05/2020</h6></div>
               </div>
             </div>
-            <div class="buttons row border-top">
-              <%= link_to project_path(project), class: 'card-link m-auto p-0 col-6 d-flex align-items-center' do %>
-                <div class="border-right p-2">MANAGE</div>
+
+            <div class="buttons row bg-white w-100">
+              <%= link_to project_path(project), class: 'card-link m-auto p-0 col-6 d-flex align-items-center text-center border-right' do %>
+                <div class="px-4"><i class="fa fa-list-ul"> </i>MANAGE</div>
               <% end %>
-              <%= link_to new_project_report_path(project), class: 'card-link m-auto p-0 col-6 d-flex align-items-center' do %>
-                <div class="p-2">SEND RECAP</div>
+              <%= link_to new_project_report_path(project), class: 'card-link m-auto p-0 col-6 d-flex align-items-center text-center' do %>
+                <div class="px-4"><i class="fas fa-paper-plane"> </i>MESSAGE</div>
               <% end %>
 
             </div>
