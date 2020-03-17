@@ -1,1 +1,80 @@
-// Specific CSS for your home-page
+header {
+  font-size: 18px;
+  padding-top: 50px;
+  overflow: hidden;
+  position: relative;
+  transform-style: preserve-3d;
+  padding-bottom: 18rem;
+  padding-left: 4rem;
+  background-color: #FFFFFF;
+
+  h1 {
+    font-size: 25px;
+  }
+  h2 {
+    font-size: 35px;
+  }
+}
+
+header:before {
+  background-color: #7ACCFF;
+  background-size: cover;
+  content: "";
+  position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  z-index: -1;
+
+}
+
+header:after {
+  background: #FFFFFF;
+  content: "";
+  height: 30rem;
+  left: -5%;
+  position: absolute;
+    right: -5%;
+    top: 85%;
+  transform-origin: 0 0;
+  transform: rotateZ(-12deg);
+  z-index: -1;
+}
+
+.logo-lp {
+  margin-bottom: 3rem;
+}
+
+.header-title, .header-subtitle {
+  color: #fff;
+  margin-bottom: 2rem;
+}
+
+.header-subtitle {
+  margin-bottom: 3rem;
+}
+
+.header-button {
+  transform: translateZ(.1px);
+  z-index: 1;
+}
+
+.content-lp {
+    z-index: 1;
+    padding-bottom: 7rem;
+    padding-left: 4rem;
+    background-color: #FFFFFF;
+    width: 100%;
+
+  h3 {
+    color: #022650
+  }
+
+  .login {
+    text-align: center;
+    padding-top: 1rem;
+  }
+}
+
+
