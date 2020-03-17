@@ -1,0 +1,44 @@
+.report-container {
+  padding: 0;
+  color: $main-blue;
+
+  h1 {
+  font-family: $headers-font;
+  font-size: 22px;
+  }
+
+  .report-card {
+    background-color: white;
+    border: 1px solid gray;
+    padding: 5px;
+    margin: 2px;
+
+    p {
+      color: $btn-nav-h2-blue;
+      margin-bottom: 0;
+      margin-left: 10px;
+      font-size: 20px;
+    }
+  }
+  i {
+    color: $main-blue;
+    font-size: 22px;
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
+  h5 {
+    color: $btn-nav-h2-blue;
+    font-weight: bold;
+  }
+  .report-collapse {
+    background-color: rgba(236, 247, 255, 0.3);
+  }
+
+  .report-card-link {
+    text-decoration: none;
+    &:hover .report-card {
+      border: 2px solid $btn-nav-h2-blue;
+    }
+  }
+}
+

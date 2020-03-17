@@ -1,6 +1,8 @@
 class ReportsController < ApplicationController
   def index
     # Lists every reports that have been sent to the client
+    @project = Project.find(project_params[:project_id])
+    @reports = @project.reports
   end
 
   def new
