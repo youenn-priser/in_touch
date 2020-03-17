@@ -4,7 +4,7 @@
 
   .user-story-card {
     background-color: white;
-    border: 1px solid $main-blue;
+    border: 1px solid gray;
     padding: 5px;
     margin: 2px;
 
@@ -14,25 +14,38 @@
       margin-left: 10px;
       font-size: 20px;
     }
+  }
 
-    .to-do {
-      p, i  {
-        color: $main-blue;
-        margin-bottom: 0;
-        margin-left: 10px;
-      }
+  .in-progress {
+    p, i  {
+      color: $main-blue;
+      margin-bottom: 0;
+      margin-left: 10px;
     }
   }
+
+  .to-do {
+    p, i  {
+      border: 0;
+      color: gray;
+      margin-bottom: 0;
+      margin-left: 10px;
+    }
+  }
+
   .done {
     background-color: rgba(0, 0, 0, 0.01);
     border: 1px solid $btn-nav-h2-blue;
-    opacity: 0.8;
+  }
+
+  .in-progress {
+    background-color: white;
+    border: 1px solid $main-blue;
   }
 
   .nav-link {
     background-color: white;
     color: gray;
-    opacity: 0.9;
     &.active {
       background-color: $background-blue;
       color: $btn-nav-h2-blue;
@@ -49,8 +62,12 @@
       border: 2px solid $main-blue;
     }
 
-    &:hover .done {
+    &:hover .user-story-card.done {
       border: 2px solid $btn-nav-h2-blue;
+    }
+
+    &:hover .user-story-card.to-do {
+      border: 2px solid gray;
     }
   }
 }
