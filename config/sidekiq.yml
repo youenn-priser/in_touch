@@ -5,3 +5,7 @@
   - default
   - mailers
   - webhook
+:schedule:
+  notifications:
+    cron: '40 17 * * 2'   # 0 0 12 ? * THU *      for every friday at 12 pm   5 12 * * 5
+    class: NotificationsSchedulerJob
