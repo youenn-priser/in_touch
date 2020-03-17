@@ -28,7 +28,7 @@
   <div class="project-card-buttons rounded col-3 align-middle">
     <p><span class="contact"><i class="fas fa-calendar-check"></i> Last contact</span> ........ </p>
     <%= link_to sanitize("Send recap <i class='fas fa-paper-plane'></i>"), new_project_report_path(@project), class: 'btn btn-show btn-block' %>
-    <div class="btn btn-show btn-block">Recap history <i class="fas fa-history"></i></div>
+    <%= link_to sanitize("Recap history <i class='fas fa-history'></i>"), project_reports_path(@project) ,class: 'btn btn-show btn-block' %>
     <%= link_to @project.trello_board_url, class: 'btn btn-show btn-block', target: '_blank' do  %>
       <div>Go to Trello <i class="fab fa-trello"></i></div>
     <% end %>
