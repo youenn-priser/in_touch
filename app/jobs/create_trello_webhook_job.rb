@@ -19,7 +19,7 @@ class CreateTrelloWebhookJob < ApplicationJob
     }
 
     response = RestClient.post "https://api.trello.com/1/webhooks/", params
-    p id = JSON.parse(response.body)["id"]
+    id = JSON.parse(response.body)["id"]
     project.update(trello_webhook_id: id)
   end
 end

@@ -9,11 +9,11 @@ module ProgressModule
       tasks_done = @user_story.tasks.select { |task| task.current_status == "done" }
 
       if tasks_to_do.count == @user_story.tasks.count
-        @user_story.update(current_status: "to do")
+        @user_story.update(current_status: "to do", done: false)
       elsif tasks_done.count == @user_story.tasks.count
-        @user_story.update(current_status: "done")
+        @user_story.update(current_status: "done", done: true)
       else
-        @user_story.update(current_status: "in progress")
+        @user_story.update(current_status: "in progress", done: false)
       end
     end
   end
