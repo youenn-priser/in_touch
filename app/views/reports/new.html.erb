@@ -2,44 +2,52 @@
   <div class="row justify-content-center"><h1><%= @project.title %> / New recap <i class="fas fa-paper-plane"></i></h1></div>
     <div class="row mt-4">
       <div class="col-6">
-      <%= form_for [@project, @report] do |f| %>
-        <div class="form-group row align-items-center justify-content-between">
-          <i class="fas fa-at col-sm-2 col-form-label"></i>
-          <div class="col-sm-10">
-            <%= f.text_field :report_client_email, value: "#{@project.client.email}", class: "form-control" %>
+        <%= form_for [@project, @report] do |f| %>
+          <div class="form-group row align-items-center justify-content-between">
+            <i class="fas fa-at col-sm-2 col-form-label"></i>
+            <div class="col-sm-10">
+              <%= f.text_field :report_client_email, value: "#{@project.client.email}", class: "form-control" %>
+            </div>
+          </div>
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <div class="form-group row">
+              <i class='fas fa-envelope-open-text col-sm-2 col-form-label'></i>
+              <div class="col-sm-10">
+                <%= f.text_field :report_topic, value: "#{@project.title} / Project report", class: "form-control" %>
+              </div>
+          </div>
+          <div class="form-group row">
+            <i class="fas fa-edit col-sm-2 col-form-label"></i>
+            <div class="col-sm-10">
+              <%= f.text_area :report_description, value: "Dear Pierre,
+
+The project is on schedule we are now approximatively about 46% done on the whole project.
+
+We have started sprint 2 and we are doing the 1st user story.
+
+We are waiting for your review Sprint 1 | User story 4.  Please let us know if we need to change something or if everything is good.
+
+Have a great day,
+
+Regards,
+
+-
+Thomas
+Kick ass web agency ", class: "form-control",rows:"15", cols:"70" %>
           </div>
         </div>
-        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-        <div class="form-group row">
-            <i class='fas fa-envelope-open-text col-sm-2 col-form-label'></i>
-            <div class="col-sm-10">
-              <%= f.text_field :report_topic, value: "#{@project.title} / Project report", class: "form-control" %>
-            </div>
-        </div>
-        <div class="form-group row">
-          <i class="fas fa-edit col-sm-2 col-form-label"></i>
-        <div class="col-sm-10">
-          <%= f.text_area :report_description, value: "Dear Pierre,
 
-    The project is on schedule we are now approximatively about 46% done on the whole project.
-
-    We have started sprint 2 and we are doing the 1st user story.
-
-    We are waiting for your review Sprint 1 | User story 4.  Please let us know if we need to change something or if everything is good.
-
-    Have a great day,
-
-    Regards,
-
-    -
-    Thomas
-    Kick ass web agency ", class: "form-control",rows:"15", cols:"70" %>
-        </div>
-        </div>
         <div class="row justify-content-center mt-5">
           <%= f.submit 'Send Recap', class:"btn btn-primary" %>
         </div>
       <% end %>
+    </div>
+    <div class="col-6">
+      <h2>Project progress from <%= @db_record_changes[:project_progress][:previous] %>% to <%= @db_record_changes[:project_progress][:current] %>%</h2>
+      <h2>Sprint done: <%= @db_record_changes[:sprints_status][:done] %></h2>
+      <h2>Sprint started: <%= @db_record_changes[:sprints_status][:started] %></h2>
+      <h2>Current sprint progress: <%= @db_record_changes[:current_sprint_progress] %>%</h2>
+      <!--<h2>Project progress from <%= @db_record_changes[:project_progress][:previous] %>% to <%= @db_record_changes[:project_progress][:current] %>%</h2>-->
     </div>
   </div>
 </div>
