@@ -10,7 +10,7 @@ module RecordModule
         project_id: @current_record[:project_id],
         project_progress: {previous: @previous_record[:progress] ,current: @current_record[:progress]},
         sprints_status: sprints_done, #{ done: "sprint_id" ou "none", started: "sprint_id" ou "none"}
-        current_sprint_progress: @current_record[:sprints][@current_record[:current_sprint]][:progress],
+        current_sprint_progress: @current_record[:sprints][@current_record[:current_sprint] - 1][:progress],
         user_stories_status: user_stories_done #{done: [US1_id, US2_id], started: [US3_id, US4_id]}
         #tasks_status: [{task_id: "fff", previous: "status or none", current: "to do, or done"}]
       }
@@ -19,8 +19,8 @@ module RecordModule
     def sprints_done
       if @current_record[:current_sprint] > @previous_record[:current_sprint]
         {
-          done: @previous_record[:sprint][@previous_record[:current_sprint]][:id],
-          started: @current_record[:sprint][@current_record[:current_sprint]][:id]
+          done: @previous_record[:sprints][@previous_record[:current_sprint] - 1][:sprint_id],
+          started: @current_record[:sprints][@current_record[:current_sprint] - 1][:sprint_id]
         }
       else
         {
@@ -32,9 +32,9 @@ module RecordModule
 
     def user_stories_done
       if @current_record[:current_sprint] == @previous_record[:current_sprint]
-        sprint_index     = @current_record[:current_sprint]
-        previous_us_list = @previous_record[:sprints][sprint_index][user_stories]
-        current_us_list  = @current_record[:sprints][sprint_index][user_stories]
+        sprint_index     = @current_record[:current_sprint] -1
+        previous_us_list = @previous_record[:sprints][sprint_index][:user_stories]
+        current_us_list  = @current_record[:sprints][sprint_index][:user_stories]
         us_list = []
 
         current_us_list.first(previous_us_list.count).each_with_index do |user_story, index|
@@ -54,6 +54,7 @@ module RecordModule
             current_status: user_story[:status]
           }
         end
+        us_list
         # previous_us = previous_us_list.map { |user_story| {user_story[:user_story_id]: user_story[:status]} }
         # {done: [US1_id, US2_id], started: [US3_id, US4_id]}
       end
