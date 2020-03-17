@@ -53,6 +53,8 @@ class ProjectsController < ApplicationController
       CreateTrelloWebhookJob.perform_later(@project.id)
       # assign trello board id to project
       # @project.trello_board_id = @board_id
+      # set weelky notifications :
+      ReportsNotificationJob.perform_later(@project.id)
 
       redirect_to project_path(@project)
     else

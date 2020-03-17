@@ -1,3 +1,6 @@
-<h1>This is your weekly recap</h1>
-<h2><%= @user.name %></h2>
+<h1>Hello <%= @project.client.first_name %> <%= @project.client.last_name %></h1>
+<h2>This is your weekly recap</h2>
+
 <p><%= @content %></p>
+
+<p>you can visit your dashboard at : <%= link_to 'In touch', root_url, target: "_blank" %> </p>
