@@ -1,0 +1,30 @@
+<div class="container p-4 mt-2">
+  <div class="report-container">
+    <h1><%= @project.title %> / Recap History</h1>
+    <div class="tab-content mt-4" id="myTabContent">
+      <% @reports.each do |report| %>
+        <a class ="report-card-link" href="#report<%= report.id %>" data-toggle="collapse" aria-expanded="false" aria-controls="report<%= report.id %>">
+          <div class="report-card rounded shadow-sm p-5 mt-2 done">
+            <div class="row">
+              <div class="col-12">
+                <div class="d-flex justify-content-around align-items-center">
+                  <h5><i class="fas fa-calendar-check"></i> <%= report.created_at.to_s(:custom_datetime) %></h5>
+                  <h5><i class="fas fa-envelope-open-text"></i> <%= report.report_topic ? report.report_topic : "#{report.project.title} / Recap" %></h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+        <div class="collapse" id="report<%= report.id %>">
+            <div class="rounded shadow-sm p-5 m-2 report-collapse">
+              <div class="row">
+                <div class="col-9 justify-content-arround">
+                  <p><%= report.description %></p>
+                </div>
+              </div>
+            </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

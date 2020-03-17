@@ -1,6 +1,8 @@
 class ReportsController < ApplicationController
   def index
     # Lists every reports that have been sent to the client
+    @project = Project.find(project_params[:project_id])
+    @reports = @project.reports
   end
 
   def new
@@ -11,10 +13,12 @@ class ReportsController < ApplicationController
 
   def create
     # Creates a new report in the DB, to be sent to the client
+
     @project                 = Project.find(project_params[:project_id])
     @report                  = Report.new(client_email: report_params[:report_client_email], description: report_params[:report_description], report_topic: report_params[:report_topic])
     @report.project_id       = project_params[:project_id]
-    @report.actual_db_record = RecordModule::DbToJsonService.new(@project)
+    @report.actual_db_record = RecordModule::DbToJsonService.new(@project).call
+
     if @report.save
       mail = ReportMailer.with(project: @project.id, subject: @report.report_topic ,content: @report.description).report
       mail.deliver_now
