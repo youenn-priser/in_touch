@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :clients, only: [:index, :new, :create]
   # For the background jobs
   require "sidekiq/web"
-  authenticate :user, lambda { |u| u.admin } do
+  authenticate :user, lambda { |u| true } do
     mount Sidekiq::Web => '/sidekiq'
   end
 end
