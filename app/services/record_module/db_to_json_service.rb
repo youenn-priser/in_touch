@@ -1,11 +1,11 @@
 module RecordModule
   class DbToJsonService
     def initialize(project)
-      @project = project
+      project = project
     end
 
-    def call
-      sprints_to_db = @project.sprints.map do |sprint|
+    def call(project)
+      sprints_to_db = project.sprints.map do |sprint|
         sprint_to_project = sprint_to_hash(sprint)
 
         user_stories_to_db = sprint.user_stories.map do |user_story|
@@ -30,8 +30,8 @@ module RecordModule
         task_id: task.id,
         title: task.title,
         current_status: task.current_status,
-        created_at: task.created_at,
-        updated_at: task.updated_at
+        # created_at: task.created_at,
+        # updated_at: task.updated_at
       }
     end
 
@@ -41,8 +41,8 @@ module RecordModule
         done: user_story.done,
         status: user_story.current_status,
         title: user_story.title,
-        updated_at: user_story.updated_at,
-        progress: ProgressModule::ProjectProgressService.new(user_story),
+        # updated_at: user_story.updated_at,
+        progress: ProgressModule::ProjectProgressService.new(user_story).call,
         tasks: []
       }
     end
@@ -52,8 +52,8 @@ module RecordModule
         sprint_id: sprint.id,
         title: sprint.title,
         done: sprint.done,
-        updated_at: sprint.updated_at,
-        progress: ProgressModule::ProjectProgressService.new(sprint),
+        # updated_at: sprint.updated_at,
+        progress: ProgressModule::ProjectProgressService.new(sprint).call,
         user_stories: []
       }
     end
@@ -62,8 +62,8 @@ module RecordModule
       {
         project_id: project.id,
         done: project.done,
-        updated_at: project.updated_at,
-        progress: ProgressModule::ProjectProgressService.new(project),
+        # updated_at: project.updated_at,
+        progress: ProgressModule::ProjectProgressService.new(project).call,
         current_sprint: current_sprint(project),
         sprints: []
       }
@@ -72,11 +72,15 @@ module RecordModule
     def current_sprint(project)
       last_sprint_done = project.sprints.find_by(done: true)
       if last_sprint_done
-        last_sprint_done_index = @project.sprints.index(last_sprint_done)
+        last_sprint_done_index = project.sprints.index(last_sprint_done) + 1
       else
-        return 0
+        return 1
       end
     end
+
+    # '{"project_id"=>2, "done"=>false, "progress"=>37, "current_sprint"=>0, "sprints"=>[{"sprint_id"=>4, "title"=>\"Sprint 1\", "done"=>false, "progress"=>37, "user_stories"=>[{"user_story_id"=>9, "done"=>false, "status"=>\"to do\", "title"=>\"US1\", "progress"=>37, "tasks"=>[{"task_id"=>21, "title"=>\"Task1\", "current_status"=>\"done\"}, {"task_id"=>22, "title"=>\"Task2\", "current_status"=>\"to do\"}]}]}]}'
+
+
 
 
 
