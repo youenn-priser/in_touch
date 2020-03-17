@@ -1,32 +1,26 @@
-// .current-project {
-
-//   .contact, h4 {
-//     color: $main-blue;
-//     font-family: $headers-font;
-//     font-weight: bold;
-//     font-size: 24px;
-//   }
-
-//   .project-card {
-//     height: 280px;
-//     background-color: $background-blue;
-//     padding: 5px;
-//     margin: 2px;
-//   }
-
-//   .circle-bar-container {
-//     bottom: 15px;
-//     margin: 20px;
-//     width: 180px;
-//     height: 180px;
-//   }
-// }
-
 .row-project {
-  margin-top: 40px;
+
+  h1 {
+    font-size: 35px;
+    color: $nav-bar-h1-blue;
+  }
+
+  h2 {
+    font-weight: 300;
+    font-size: 20px;
+    color: #73C1FA;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    font-weight: 300;
+    font-size: 14px;
+  }
 }
 
 .current-project {
+
+  padding-top: 20px;
 
   .contact, h4 {
     color: $main-blue;
@@ -47,15 +41,26 @@
     margin: 2px;
   }
 
-  .project-card-infos {
-    padding-top: 30px;
-  }
 
   .circle-bar-container {
-    margin-bottom: 10px;
-    margin-left: 40px;
-    width: 160px;
-    height: 180px;
+    width: 170px;
+    height: 190px;
+  }
+
+  .project-progress {
+    padding-left: 50px;
+    padding-top: 50px;
   }
 }
 
+.project-card-progress {
+  margin-left: 200px;
+}
+
+.double-infos {
+  background-color: #ECF7FF;
+  padding: 20px;
+  align-items: center;
+  margin-left: 16px;
+  border-radius: 5px;
+}
