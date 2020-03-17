@@ -39,8 +39,10 @@ module RecordModule
       {
         user_story_id: user_story.id,
         done: user_story.done,
+        status: user_story.current_status,
         title: user_story.title,
         updated_at: user_story.updated_at,
+        progress: ProgressModule::ProjectProgressService.new(user_story)
         tasks: []
       }
     end
@@ -51,6 +53,7 @@ module RecordModule
         title: sprint.title,
         done: sprint.done,
         updated_at: sprint.updated_at,
+        progress: ProgressModule::ProjectProgressService.new(sprint)
         user_stories: []
       }
     end
@@ -60,10 +63,20 @@ module RecordModule
         project_id: project.id,
         done: project.done,
         updated_at: project.updated_at,
+        progress: ProgressModule::ProjectProgressService.new(project)
+        current_sprint: current_sprint(project)
         sprints: []
       }
     end
 
+    def current_sprint(project)
+      last_sprint_done = project.sprints.find_by(done: true)
+      if last_sprint_done
+        last_sprint_done_index = @project.sprints.index(last_sprint_done)
+      else
+        return 0
+      end
+    end
 
 
 
@@ -72,6 +85,8 @@ module RecordModule
   #   project_id: ,
   #   done: ,
   #   updated_at: ,
+  #   progress: ,
+  #   current_sprint: ,
   #   sprints: [{
   #     sprint_id: ,
   #     title: ,
@@ -80,6 +95,7 @@ module RecordModule
   #     user_stories: [{
   #       user_story_id: ,
   #       done: ,
+  #       status: ,
   #       title: ,
   #       updated_at:
   #       tasks: [{
