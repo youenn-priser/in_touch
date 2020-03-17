@@ -1,4 +1,45 @@
-<div class="container mt-4">
-  <h1>Welcome to InTouch</h1>
-  <p>Please log in to use the best tool in the world !</p>
+<header class="d-flex align-items-center">
+
+  <div class="header-content container">
+    <div class="logo-lp">
+      <%= image_tag "logo.png", alt: "In touch agency logo", width: 400, height: 120  %>
+    </div>
+
+    <h1 class="header-title">Welcome to In Touch</h1>
+    <h2 class="header-subtitle">We love to help you track your project <br> and send automate report to your clients</h2>
+
+    <div class="login">
+      <div class="btn btn-show mr-3">
+        <%= link_to sanitize("<i class='fas fa-sign-in-alt'></i> Login"), user_trello_omniauth_authorize_path, class: "nav-link" %>
+      </div>
+      <div class="btn btn-show">
+        <%= link_to sanitize("<i class='fas fa-rocket'></i> Get started today"), user_trello_omniauth_authorize_path, class: "nav-link" %>
+      </div>
+    </div>
+
+  </div>
+
+</header>
+
+
+<div class="content-lp container">
+  <div>
+    <h3 class="header-title">Follow the advancements of all <br>your projects in a blink of an eye</h3>
+  </div>
+
+  <div>
+    <h3 class="header-title">Overview of your project in 1 click</h3>
+  </div>
+
+  <div>
+    <h3 class="header-title">Send recap to your client in 1 min</h3>
+  </div>
+
+   <div class="login">
+      <div class="btn btn-show btn-lg">
+        <%= link_to sanitize("<i class='fas fa-rocket'></i> Start now"), user_trello_omniauth_authorize_path, class: "nav-link" %>
+      </div>
+    </div>
+
 </div>
+
