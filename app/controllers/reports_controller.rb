@@ -14,7 +14,8 @@ require 'pry-byebug'
     # Creates a new report in the DB, to be sent to the client
     @project = Project.find(project_params[:project_id])
     @report  = Report.new(client_email: report_params[:report_client_email], description: report_params[:report_description], report_topic: report_params[:report_topic])
-      if @report.save
+    binding.pry
+    if @report.save
       mail = ReportMailer.with(project: @project, content: @report.description).report
       mail.deliver_now
       redirect project_path(@project)
@@ -30,7 +31,7 @@ require 'pry-byebug'
   end
 
   def report_params
-    params.permit(:report_client_email, :report_description, :report_topic)
+    params.permit(:report, :report_client_email, :report_description, :report_topic)
   end
 
 end
