@@ -19,8 +19,8 @@ print "OK"
 puts "Seeding the DB......"
 
 pierre        = Client.create!(first_name: 'Pierre', last_name: 'Facq', email: 'pierre@lewagon.org', company: 'Le Wagon Nantes', phone: '0622796973')
-yoichi        = User.create!(email: 'yoichi.trigalot@gmail.com')
-marketplace   = Project.create!(title: 'AirMasknShare', client: pierre, user: yoichi, trello_board_url: "https://trello.com/b/sWMxmcEO/airmasknshare")
+thibault      = User.create!(email: 'thibault@nolex.app')
+marketplace   = Project.create!(title: 'AirMasknShare', client: pierre, user: thibault, trello_board_url: "https://trello.com/b/sWMxmcEO/airmasknshare")
 
 report_first  = Report.create!(project: marketplace, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', status: 'sent')
 report_second = Report.create!(project: marketplace, description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat...', status: 'draft')
