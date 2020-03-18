@@ -43,11 +43,13 @@ Kick ass web agency ", class: "form-control",rows:"15", cols:"70" %>
       <% end %>
     </div>
     <div class="col-6">
-      <h2>Project progress from <%= @db_record_changes[:project_progress][:previous] %>% to <%= @db_record_changes[:project_progress][:current] %>%</h2>
-      <h2>Sprint done: <%= @db_record_changes[:sprints_status][:done] %></h2>
-      <h2>Sprint started: <%= @db_record_changes[:sprints_status][:started] %></h2>
-      <h2>Current sprint progress: <%= @db_record_changes[:current_sprint_progress] %>%</h2>
-      <!--<h2>Project progress from <%= @db_record_changes[:project_progress][:previous] %>% to <%= @db_record_changes[:project_progress][:current] %>%</h2>-->
+      <% if @db_record_changes %>
+        <h2>Project progress from <%= @db_record_changes[:project_progress][:previous] %>% to <%= @db_record_changes[:project_progress][:current] %>%</h2>
+        <h2>Sprint done: <%= @db_record_changes[:sprints_status][:done] %></h2>
+        <h2>Sprint started: <%= @db_record_changes[:sprints_status][:started] %></h2>
+        <h2>Current sprint progress: <%= @db_record_changes[:current_sprint_progress] %>%</h2>
+        <!--<h2>Project progress from <%= @db_record_changes[:project_progress][:previous] %>% to <%= @db_record_changes[:project_progress][:current] %>%</h2>-->
+      <% end %>
     </div>
   </div>
 </div>
