@@ -17,7 +17,7 @@ class ReportsController < ApplicationController
       @db_record_changes = RecordModule::RecordCompareService.new(previous_db_record, current_db_record).call
     end
     # until here --------------------------------------------------------------------------------------
-
+    @mail_template = RecordModule::MailTemplateService.new(@project).call
   end
 
   def create

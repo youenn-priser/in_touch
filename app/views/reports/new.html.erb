@@ -19,22 +19,7 @@
           <div class="form-group row">
             <i class="fas fa-edit col-sm-2 col-form-label"></i>
             <div class="col-sm-10">
-              <%= f.text_area :report_description, value: "Dear Pierre,
-
-
-The project is on schedule we are now approximatively about 46% done on the whole project.
-
-We have started sprint 2 and we are doing the 1st user story.
-
-We are waiting for your review Sprint 1 | User story 4.  Please let us know if we need to change something or if everything is good.
-
-Have a great day,
-
-Regards,
-
--
-Thomas
-Kick ass web agency ", class: "form-control",rows:"15", cols:"70" %>
+              <%= f.text_area :report_description, value: "#{@mail_template}", class: "form-control",rows:"15", cols:"70" %>
 
           </div>
         </div>
