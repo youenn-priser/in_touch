@@ -1,1 +1,7 @@
-alert.text.erb
+<%= @project.title %> - Notification !
+
+  Hey <%= @project.user.name %>
+Your weekly recap is ready to send to your client
+
+Go to your project's dashboard on <%= link_to 'Intouch', project_url(@project), target: "_blank" %> to process.
+
