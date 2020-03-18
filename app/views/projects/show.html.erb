@@ -25,7 +25,7 @@
   </div>
 
   <div class="project-card-buttons rounded col-3 align-middle mt-4">
-    <p><span class="contact"><i class="fas fa-calendar-check"></i> Last contact</span> ........ </p>
+    <p><span class="contact"><i class="fas fa-calendar-check"></i> Last contact</span> <%= @project.reports.empty? ? "No recap sent yet" : "on #{@project.reports.last.created_at.to_s(:custom_datetime)}"%> </p>
     <%= link_to sanitize("Send recap <i class='fas fa-paper-plane'></i>"), new_project_report_path(@project), class: 'btn btn-show btn-block' %>
     <%= link_to sanitize("Recap history <i class='fas fa-history'></i>"), project_reports_path(@project) ,class: 'btn btn-show btn-block mt-3' %>
     <%= link_to @project.trello_board_url, class: 'btn btn-show btn-block mt-3', target: '_blank' do  %>
