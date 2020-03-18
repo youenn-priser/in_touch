@@ -1,6 +1,6 @@
 class Sprint < ApplicationRecord
   belongs_to :project
-  has_many :user_stories
+  has_many :user_stories, :dependent => :destroy
   has_many :tasks, through: :user_stories
 
   validates :title, presence: true
