@@ -72,7 +72,7 @@ module RecordModule
     def current_sprint(project)
       last_sprint_done = project.sprints.find_by(done: true)
       if last_sprint_done
-        last_sprint_done_index = @project.sprints.index(last_sprint_done) + 1
+        current_sprint_index = (project.sprints.index(last_sprint_done) + 1) + 1
       else
         return 1
       end
