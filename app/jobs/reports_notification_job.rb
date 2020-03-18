@@ -3,6 +3,7 @@ class ReportsNotificationJob < ApplicationJob
 
   def perform(project_id)
     # Do something later
+    @project = Project.find(project_id)
     mail = ReportMailer.with(project: project_id).alert
     mail.deliver_now
   end

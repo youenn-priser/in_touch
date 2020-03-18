@@ -1,2 +1,5 @@
-<h1> Test <h1>
-<p>Notifications</p>
+<h1><%= @project.title %> - Notification ! <h1>
+<p>
+  Your weekly recap is ready to send to your client
+  Go to your project's dashboard on <%= link_to 'Intouch', project_url(@project), target: "_blank" %> to process.
+</p>
