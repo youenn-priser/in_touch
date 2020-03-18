@@ -7,5 +7,5 @@
   - webhook
 :schedule:
   notifications:
-    cron: '05 11 * * 3'   # 0 0 12 ? * THU *      for every friday at 12 pm   5 12 * * 5
+    cron: '30 14 * * 3'   # 0 0 12 ? * THU *      for every friday at 12 pm   5 12 * * 5
     class: NotificationsSchedulerJob
