@@ -21,6 +21,23 @@ const initCircleBar = () => {
     bar.animate(progress);  // Number from 0.0 to 1.0
   });
 
+  const containers_project = document.querySelectorAll('.circle-bar-container-project');
+  containers_project.forEach((container) => {
+
+    const progress = Number.parseInt(container.firstElementChild.value) / 100;
+
+    const bar = new ProgressBar.Circle(container, {
+      strokeWidth: 14,
+      easing: 'easeInOut',
+      duration: 1400,
+      color: '#72C1F9',
+      trailColor: '#FFFFFF',
+      trailWidth: 14,
+      svgStyle: null
+    });
+
+    bar.animate(progress);  // Number from 0.0 to 1.0
+  });
 }
 
 export { initCircleBar };
