@@ -53,6 +53,20 @@
   }
 }
 
+#delete-project {
+  font-size: 15px;
+  color: $nav-bar-h1-blue;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+    color: $nav-bar-h1-blue;
+    i {
+      color: $nav-bar-h1-blue;
+      font-size: 17px;
+    }
+  }
+}
+
 .project-card-progress {
   margin-left: 200px;
 }

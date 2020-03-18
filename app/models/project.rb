@@ -3,8 +3,8 @@ class Project < ApplicationRecord
   belongs_to :client
   belongs_to :user
 
-  has_many :reports
-  has_many :sprints
+  has_many :reports, :dependent => :destroy
+  has_many :sprints, :dependent => :destroy
   has_many :user_stories, through: :sprints
   has_many :tasks, through: :user_stories
 

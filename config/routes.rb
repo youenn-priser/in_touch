@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  resources :projects, only: [:index, :show, :new, :create] do
+  resources :projects, only: [:index, :show, :new, :create, :destroy] do
     resources :reports, only: [:index, :new, :create]
   end
 
