@@ -113,9 +113,9 @@
                         <div class="row">
                           <li>
                             <div class="div m-2">
-                              <h4 style="color: #034A9E"><i class="fas fa-comments"></i> Waiting for client callback</h4>
+                              <h4 style="color: #034A9E"><i class="fas fa-comments"></i> Waiting for client feedback</h4>
                                 <% if user_story.tasks.where(current_status: "waiting client").count == 0 %>
-                                  <p>No tasks need client feedback</p>
+                                  <p>No tasks in this user story need client feedback</p>
                                 <% else %>
                                   <% user_story.tasks.where(current_status: "waiting client").each do |task| %>
                                     <ul>
@@ -133,7 +133,7 @@
                             <div class="div m-2">
                               <h4 style="color: #034A9E"><i class="fas fa-user-clock"></i> Comming soon | to review</h4>
                               <% if user_story.tasks.where(current_status: "to review/debug").count == 0 %>
-                                <p>All tasks are "in progress" or "done" for this User story</p>
+                                <p>No tasks in this user story need reviews</p>
                               <% else %>
                                 <% user_story.tasks.where(current_status: "to review/debug").each do |task| %>
                                   <ul>
