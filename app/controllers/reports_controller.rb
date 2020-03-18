@@ -11,7 +11,7 @@ class ReportsController < ApplicationController
     @report    = Report.new
 
     #comment those lines if you have previous record in previous formatting ---------------------------
-    if @project.reports.empty?
+    if !@project.reports.empty?
       previous_db_record = JSON.parse(Report.where(project: @project).last.actual_db_record, symbolize_names: true)
       current_db_record = JSON.parse(RecordModule::DbToJsonService.new(@project).call, symbolize_names: true)
       @db_record_changes = RecordModule::RecordCompareService.new(previous_db_record, current_db_record).call
