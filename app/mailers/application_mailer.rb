@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'developer@intouch.com'
+  default from: 'contact@intouch.agency'
   layout 'mailer'
 end

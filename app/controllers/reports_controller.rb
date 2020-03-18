@@ -30,7 +30,7 @@ class ReportsController < ApplicationController
 
     if @report.save
       mail = ReportMailer.with(project: @project.id, subject: @report.report_topic ,content: @report.description).report
-      mail.deliver_now
+      mail.deliver_later
       redirect_to project_path(@project)
     else
       render :new

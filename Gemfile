@@ -22,8 +22,10 @@ gem 'trello_webhook'
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 gem 'sidekiq-scheduler'
+
 # Mail
 gem 'letter_opener', group: :development
+gem 'postmark-rails'
 
 # Asset
 gem 'autoprefixer-rails'
