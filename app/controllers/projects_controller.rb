@@ -64,6 +64,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project = Project.find(params[:id])
+    TrelloModule::DeleteBoard.new(@project).call
     @project.destroy
     redirect_to projects_path
   end
