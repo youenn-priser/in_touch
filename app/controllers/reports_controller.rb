@@ -7,9 +7,13 @@ class ReportsController < ApplicationController
     # Instanciate a new report to be modified and then created in the DB
     @project   = Project.find(project_params[:project_id])
     @report    = Report.new
-    previous_db_record = JSON.parse(Report.where(project: @project).last.actual_db_record, symbolize_names: true)
-    current_db_record = JSON.parse(RecordModule::DbToJsonService.new(@project).call, symbolize_names: true)
-    @db_record_changes = RecordModule::RecordCompareService.new(previous_db_record, current_db_record).call
+    #comment those lines if you have previous record in previous formatting ---------------------------
+    if Report.where(project: @project).last.actual_db_record
+      previous_db_record = JSON.parse(Report.where(project: @project).last.actual_db_record, symbolize_names: true)
+      current_db_record = JSON.parse(RecordModule::DbToJsonService.new(@project).call, symbolize_names: true)
+      @db_record_changes = RecordModule::RecordCompareService.new(previous_db_record, current_db_record).call
+    end
+    # until here --------------------------------------------------------------------------------------
   end
 
   def create
