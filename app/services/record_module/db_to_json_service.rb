@@ -1,11 +1,11 @@
 module RecordModule
   class DbToJsonService
     def initialize(project)
-      project = project
+      @project = project
     end
 
-    def call(project)
-      sprints_to_db = project.sprints.map do |sprint|
+    def call
+      sprints_to_db = @project.sprints.map do |sprint|
         sprint_to_project = sprint_to_hash(sprint)
 
         user_stories_to_db = sprint.user_stories.map do |user_story|
@@ -19,9 +19,9 @@ module RecordModule
         sprint_to_project
       end
 
-      db_record = project_to_hash(project)
+      db_record = project_to_hash(@project)
       db_record[:sprints] = sprints_to_db
-      db_record
+      db_record.to_json
 
     end
 
@@ -72,7 +72,7 @@ module RecordModule
     def current_sprint(project)
       last_sprint_done = project.sprints.find_by(done: true)
       if last_sprint_done
-        last_sprint_done_index = project.sprints.index(last_sprint_done) + 1
+        last_sprint_done_index = @project.sprints.index(last_sprint_done) + 1
       else
         return 1
       end
