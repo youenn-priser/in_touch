@@ -70,5 +70,17 @@
       border: 2px solid gray;
     }
   }
+
+  .inprogress-active {
+    border: 2px solid $main-blue;
+  }
+
+  .done-active {
+    border: 2px solid $btn-nav-h2-blue;
+  }
+
+  .to-do-active {
+    border: 2px solid gray;
+  }
 }
 
