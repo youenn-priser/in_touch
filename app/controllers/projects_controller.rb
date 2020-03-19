@@ -54,7 +54,7 @@ class ProjectsController < ApplicationController
       # assign trello board id to project
       # @project.trello_board_id = @board_id
       # set weelky notifications :
-      NotificationsSchedulerJob.perform_later(@project.id)
+      # NotificationsSchedulerJob.perform_later(@project.id)
 
       redirect_to project_path(@project)
     else
