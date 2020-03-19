@@ -1,24 +1,24 @@
 <div class="container form-container-new-report rounded p-4 mt-2 shadow">
   <div class="row justify-content-center"><h1><%= @project.title %> / New recap <i class="fas fa-paper-plane"></i></h1></div>
     <div class="row mt-4">
-      <div class="col-6">
+      <div class="col-6 pl-4">
         <%= form_for [@project, @report] do |f| %>
           <div class="form-group row align-items-center justify-content-between">
-            <i class="fas fa-at col-sm-2 col-form-label"></i>
-            <div class="col-sm-10">
+            <i class="fas fa-at col-sm-1 col-form-label pl-4 text-center"></i>
+            <div class="col-sm-11">
               <%= f.text_field :report_client_email, value: "#{@project.client.email}", class: "form-control" %>
             </div>
           </div>
           <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
           <div class="form-group row">
-              <i class='fas fa-envelope-open-text col-sm-2 col-form-label'></i>
-              <div class="col-sm-10">
+              <i class='fas fa-envelope-open-text col-sm-1 pl-4 col-form-label text-center'></i>
+              <div class="col-sm-11">
                 <%= f.text_field :report_topic, value: "#{@project.title} / Project report", class: "form-control" %>
               </div>
           </div>
           <div class="form-group row">
-            <i class="fas fa-edit col-sm-2 col-form-label"></i>
-            <div class="col-sm-10">
+            <i class="fas fa-edit col-sm-1 col-form-label pl-4 text-center"></i>
+            <div class="col-sm-11">
               <%= f.text_area :report_description, value: "#{@mail_template}", class: "form-control",rows:"15", cols:"70" %>
 
           </div>
@@ -29,14 +29,38 @@
         </div>
       <% end %>
     </div>
-    <div class="col-6">
-      <% if @db_record_changes %>
-        <h2>Project progress from <%= @db_record_changes[:project_progress][:previous] %>% to <%= @db_record_changes[:project_progress][:current] %>%</h2>
-        <h2>Sprint done: <%= @db_record_changes[:sprints_status][:done] %></h2>
-        <h2>Sprint started: <%= @db_record_changes[:sprints_status][:started] %></h2>
-        <h2>Current sprint progress: <%= @db_record_changes[:current_sprint_progress] %>%</h2>
-        <!--<h2>Project progress from <%= @db_record_changes[:project_progress][:previous] %>% to <%= @db_record_changes[:project_progress][:current] %>%</h2>-->
-      <% end %>
+    <div class="col-6 pl-4">
+      <div class="recap-card bg-white shadow rounded py-2 px-4">
+        <h4 class="pb-4">Since last recap</h4>
+        <% if @db_record_changes %>
+
+          <h2>Project:</h2>
+          <div class="pb-2 row pl-4 align-items-end">
+            <div class="p-previous"><%= @db_record_changes[:project_progress][:previous] %></div>
+            <h2>% to</h2>
+            <div class="p-current"><%= @db_record_changes[:project_progress][:current] %></div>
+            <h2>%</h2>
+          </div>
+
+          <h2>Sprint:</h2>
+          <% if @db_record_changes[:sprints_status][:done] == "none"%>
+            <h2 class="pb-2"><%= @db_record_changes[:previous_sprint_progress] %>% to <%= @db_record_changes[:current_sprint_progress] %>%</h2>
+          <% else %>
+            <h2 class="pb-2">Sprint finished: <%= @db_record_changes[:sprints_status][:done] %></h2>
+            <h2 class="pb-2">Sprint started: <%= @db_record_changes[:sprints_status][:started] %></h2>
+            <h2 class="pb-2"><%= @db_record_changes[:current_sprint_progress] %>%</h2>
+          <% end %>
+
+          <% if !@db_record_changes[:user_stories_status].empty? %>
+            <h2>User stories:</h2>
+            <% @db_record_changes[:user_stories_status].each do |user_story| %>
+              <h2>- <%= @project.user_stories.find(user_story[:user_story_id]).title %> </h2>
+              <h2 class="pl-4"><%= user_story[:previous_status] %> to <%= user_story[:current_status]  %> </h2>
+            <% end %>
+          <% end %>
+
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
