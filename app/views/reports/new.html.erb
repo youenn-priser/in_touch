@@ -1,24 +1,24 @@
 <div class="container form-container-new-report rounded p-4 mt-2 shadow">
   <div class="row justify-content-center"><h1><%= @project.title %> / New recap <i class="fas fa-paper-plane"></i></h1></div>
     <div class="row mt-4">
-      <div class="col-6">
+      <div class="col-6 pl-4">
         <%= form_for [@project, @report] do |f| %>
           <div class="form-group row align-items-center justify-content-between">
-            <i class="fas fa-at col-sm-2 col-form-label"></i>
-            <div class="col-sm-10">
+            <i class="fas fa-at col-sm-1 col-form-label pl-4 text-center"></i>
+            <div class="col-sm-11">
               <%= f.text_field :report_client_email, value: "#{@project.client.email}", class: "form-control" %>
             </div>
           </div>
           <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
           <div class="form-group row">
-              <i class='fas fa-envelope-open-text col-sm-2 col-form-label'></i>
-              <div class="col-sm-10">
+              <i class='fas fa-envelope-open-text col-sm-1 pl-4 col-form-label text-center'></i>
+              <div class="col-sm-11">
                 <%= f.text_field :report_topic, value: "#{@project.title} / Project report", class: "form-control" %>
               </div>
           </div>
           <div class="form-group row">
-            <i class="fas fa-edit col-sm-2 col-form-label"></i>
-            <div class="col-sm-10">
+            <i class="fas fa-edit col-sm-1 col-form-label pl-4 text-center"></i>
+            <div class="col-sm-11">
               <%= f.text_area :report_description, value: "#{@mail_template}", class: "form-control",rows:"15", cols:"70" %>
 
           </div>
@@ -29,14 +29,46 @@
         </div>
       <% end %>
     </div>
-    <div class="col-6">
-      <% if @db_record_changes %>
-        <h2>Project progress from <%= @db_record_changes[:project_progress][:previous] %>% to <%= @db_record_changes[:project_progress][:current] %>%</h2>
-        <h2>Sprint done: <%= @db_record_changes[:sprints_status][:done] %></h2>
-        <h2>Sprint started: <%= @db_record_changes[:sprints_status][:started] %></h2>
-        <h2>Current sprint progress: <%= @db_record_changes[:current_sprint_progress] %>%</h2>
-        <!--<h2>Project progress from <%= @db_record_changes[:project_progress][:previous] %>% to <%= @db_record_changes[:project_progress][:current] %>%</h2>-->
-      <% end %>
+    <div class="col-6 pl-4">
+      <div class="recap-card bg-white rounded py-2 px-4">
+        <div>
+          <h4 class="pb-4">Since last recap</h4>
+        </div>
+        <% if @db_record_changes %>
+
+          <div class="border-bottom mb-4 pb-2">
+            <h2>Project:</h2>
+            <div class="pb-2 pl-4">
+              <!-- <div class="display-inline"> -->
+                <h2><span class="p-previous"><%= @db_record_changes[:project_progress][:previous] %>% to </span><span class="p-current"><%= @db_record_changes[:project_progress][:current] %>%</span></h2>
+              <!-- </div> -->
+            </div>
+          </div>
+
+          <div class="border-bottom mb-4 pb-2">
+            <h2>Sprint:</h2>
+            <% if @db_record_changes[:sprints_status][:done] == "none"%>
+              <h2 class="pb-2 pl-4"><span class="p-previous"><%= @db_record_changes[:previous_sprint_progress] %>% to </span><span class="p-current"><%= @db_record_changes[:current_sprint_progress] %>%</span></h2>
+            <% else %>
+              <h2 class="pb-2 pl-4"><span class="p-previous">Sprint finished: <%= @db_record_changes[:sprints_status][:done] %></span></h2>
+              <h2 class="pb-2 pl-4">Sprint started: <span class="p-current"><%= @db_record_changes[:sprints_status][:started] %></span></h2>
+              <h2 class="pb-2 pl-4">Progress <span class="p-current"><%= @db_record_changes[:current_sprint_progress] %>%</span></h2>
+            <% end %>
+          </div>
+
+          <div>
+            <% if !@db_record_changes[:user_stories_status].empty? %>
+              <h2>User stories:</h2>
+              <% @db_record_changes[:user_stories_status].each do |user_story| %>
+                <h2 class="mb-0 pl-2">- <%= @project.user_stories.find(user_story[:user_story_id]).title %> </h2>
+                <h2 class="pb-2 pl-4"><span class="p-previous">"<%= user_story[:previous_status] %>"" to </span><span class="p-current">"<%= user_story[:current_status]  %>"</span></h2>
+              <% end %>
+            <% end %>
+          </div>
+
+        <% end %>
+
+      </div>
     </div>
   </div>
 </div>

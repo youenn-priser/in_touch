@@ -10,8 +10,9 @@ module RecordModule
         project_id: @current_record[:project_id],
         project_progress: {previous: @previous_record[:progress] ,current: @current_record[:progress]},
         sprints_status: sprints_done, #{ done: "sprint_id" ou "none", started: "sprint_id" ou "none"}
+        previous_sprint_progress: @previous_record[:sprints][@previous_record[:current_sprint] - 1][:progress],
         current_sprint_progress: @current_record[:sprints][@current_record[:current_sprint] - 1][:progress],
-        user_stories_status: user_stories_done #{done: [US1_id, US2_id], started: [US3_id, US4_id]}
+        user_stories_status: user_stories_done #{user_story_id: , previous_status: , current_status: }
         #tasks_status: [{task_id: "fff", previous: "status or none", current: "to do, or done"}]
       }
     end
