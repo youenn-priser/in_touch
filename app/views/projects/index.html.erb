@@ -34,8 +34,8 @@
               </div>
 
               <div class="row align-items-end pt-2">
-                <div class="col-2 pl-2 pr-0 text-center"><i class="fas fa-calendar-check"></i></div>
-                <div class="col-10 pl-2 pr-0"><h6>01/05/2020</h6></div>
+                <div class="col-2 pl-2 pr-0 text-center"><i class="fas fa-calendar-check" style="<%= project.reports.empty? ? 'color: #BFBFBF; font-weight: lighter' : '' %>"></i></div>
+                <div class="col-10 pl-2 pr-0"><h6 style="<%= project.reports.empty? ? 'color: #BFBFBF; font-weight: lighter' : '' %>"><%= project.reports.empty? ? "No recap sent yet" : "#{project.reports.last.created_at.to_s(:custom_datetime)}"%></h6></div>
               </div>
             </div>
 
