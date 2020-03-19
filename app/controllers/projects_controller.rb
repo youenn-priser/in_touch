@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 
   def index
-    @projects = Project.all
+    @projects = Project.all # where(user: current_user)
   end
 
   def show
@@ -64,6 +64,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project = Project.find(params[:id])
+    TrelloModule::DeleteBoard.new(@project).call
     @project.destroy
     flash[:success] = "The project has been delete"
     redirect_to projects_path

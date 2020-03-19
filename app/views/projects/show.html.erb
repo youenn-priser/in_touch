@@ -25,7 +25,7 @@
   </div>
 
   <div class="project-card-buttons rounded col-3 align-middle mt-4">
-    <p><span class="contact"><i class="fas fa-calendar-check"></i> Last contact</span> ........ </p>
+    <p><span class="contact"><i class="fas fa-calendar-check"></i> Last contact</span> <%= @project.reports.empty? ? "No recap sent yet" : "on #{@project.reports.last.created_at.to_s(:custom_datetime)}"%> </p>
     <%= link_to sanitize("Send recap <i class='fas fa-paper-plane'></i>"), new_project_report_path(@project), class: 'btn btn-show btn-block' %>
     <%= link_to sanitize("Recap history <i class='fas fa-history'></i>"), project_reports_path(@project) ,class: 'btn btn-show btn-block mt-3' %>
     <%= link_to @project.trello_board_url, class: 'btn btn-show btn-block mt-3', target: '_blank' do  %>
@@ -33,12 +33,12 @@
     <% end %>
   </div>
 
+</div>
 
 <!-- Delete confirmation modals -->
 
-</div>
-<div class="row mt-1 d-flex justify-content-end">
-  <div class="mr-3">
+<div class="row pt-4 d-flex justify-content-end">
+  <div class="mr-4">
     <%= link_to sanitize("<i class='fas fa-trash-alt'></i> Delete project"), project_path(@project), method: :delete, data: { confirm: 'Are you sure you want to delete the project?' }, id: 'delete-project' %>
   </div>
 </div>
