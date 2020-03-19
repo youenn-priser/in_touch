@@ -1,79 +1,90 @@
 <div class="container form-container-new-project rounded p-4 mt-4 shadow">
-  <div class="row justify-content-center">
-    <h1>Add a New project <i class="fas fa-rocket"></i></h1>
+  <div class="row justify-content-center mb-5">
+    <h1>Add a New project</h1>
   </div>
 
-  <div class="row m-2">
-    <div class="col-6">
+  <hr>
 
+  <div class="row m-2">
+    <div class="col-6 py-2">
+      <div class="d-flex">
+        <p class="pl-3" style="font-size: 18px">Project</p>
+      </div>
+    </div>
+    <div class="col-6 pt-2">
       <form action="/projects" method="post" class="project-form form-group">
         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
         <div class="project-info">
           <label for="project_title"><h5>Title</h5></label>
           <input type="text" name="project_title" id="project_title" class= "form-control" required>
         </div>
-
         <div class="project-info">
           <label for="number_of_sprints"><h5 class="mt-2">Number of sprints</h5></label>
           <%= number_field_tag :number_of_sprints, params[:number_of_sprints], class: "form-control" %>
         </div>
     </div>
-
-    <div class="col-6">
-      <div class="project-info">
-        <label for="project_client"><h5>Client</h5></label>
-        <select type="text" name="project_client" id="project_client" class= "form-control mb-5">
-            <option value="">Default</option>
-          <% @clients.each do |client| %>
-            <option value="<%= client.id %>">
-              <%= client.first_name + ' ' + client.last_name %>
-            </option>
-          <% end %>
-        </select>
-
-        <div class="add-client-buton d-flex justify-content-left align-items-center">
-          <h5 class="mr-3 p-2 rounded btn-show"> Or create one </h5>
-         </div>
-      </div>
-
-    </div>
-
   </div>
+
+  <hr>
+
+  <div class="row m-2">
+    <div class="col-6 pt-2">
+       <div class="d-flex align-items-end">
+        <p class="pl-3 m-0" style="font-size: 18px">Client</p>
+      </div>
+    </div>
+    <div class="col-6 d-flex pt-2 align-items-end justify-content-between d-flex align-items-end">
+      <div class="project-info flex-grow-1 mr-2">
+          <select type="text" name="project_client" id="project_client" class= "form-control mb-2">
+              <option value="">Select your client</option>
+            <% @clients.each do |client| %>
+              <option value="<%= client.id %>">
+                <%= client.first_name + ' ' + client.last_name %>
+              </option>
+            <% end %>
+          </select>
+
+      </div>
+          <div class="add-client-buton">
+            <h5 class="p-2 rounded btn-show"> Or create one </h5>
+          </div>
+    </div>
+  </div>
+
     <div class="row">
+      <div class="container justify-content-center">
+        <div class="form-group client-form <%= @plop ? '' : 'd-none' %>">
+          <div class="d-flex flex-column ">
+            <h3>Enter new client infos:</h3>
 
-        <div class="container m-5 justify-content-center">
-          <div class="form-group client-form <%= @plop ? '' : 'd-none' %>">
-              <hr>
-              <div class="d-flex flex-column ">
-                <h3>Enter new client infos:</h3>
-
-                <div class="client-info mt-3">
-                  <label for="first_name"><h5>First name</h5></label>
-                  <%= text_field_tag :client_first_name, params[:client_first_name], class: "form-control" %>
-                </div>
-                <div class="client-info mt-3">
-                  <label for="last_name"><h5>Last name</h5></label>
-                  <%= text_field_tag :client_last_name, params[:client_last_name], class: "form-control" %>
-                </div>
-                <div class="client-info mt-3">
-                  <label for="company"><h5>Company</h5></label>
-                  <%= text_field_tag :client_company, params[:client_company], class: "form-control" %>
-                </div>
-                <div class="client-info mt-3">
-                  <label for="phone-number"><h5>Phone number</h5></label>
-                  <%= text_field_tag :client_phone_number, params[:client_phone_number], class: "form-control" %>
-                </div>
-                <div class="client-info mt-3">
-                  <label for="email"><h5>Email</h5></label>
-                  <%= text_field_tag :client_email, params[:client_email], class: "form-control" %>
-                </div>
-              </div>
+            <div class="client-info mt-3">
+              <label for="first_name"><h5>First name</h5></label>
+              <%= text_field_tag :client_first_name, params[:client_first_name], class: "form-control" %>
             </div>
+            <div class="client-info mt-3">
+              <label for="last_name"><h5>Last name</h5></label>
+              <%= text_field_tag :client_last_name, params[:client_last_name], class: "form-control" %>
             </div>
-
+            <div class="client-info mt-3">
+              <label for="company"><h5>Company</h5></label>
+              <%= text_field_tag :client_company, params[:client_company], class: "form-control" %>
+            </div>
+            <div class="client-info mt-3">
+              <label for="phone-number"><h5>Phone number</h5></label>
+              <%= text_field_tag :client_phone_number, params[:client_phone_number], class: "form-control" %>
+            </div>
+            <div class="client-info mt-3">
+              <label for="email"><h5>Email</h5></label>
+              <%= text_field_tag :client_email, params[:client_email], class: "form-control" %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-  <div class="row justify-content-center">
+  <hr class="mb-5">
+
+  <div class="row justify-content-start px-3">
     <input type="submit" value="Create project" class="btn btn-primary">
     </form>
   </div>
