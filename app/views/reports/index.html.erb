@@ -1,6 +1,6 @@
 <div class="container p-4 mt-2">
   <div class="report-container">
-    <h1><%= @project.title %> / Recap History</h1>
+    <h1><%= link_to @project.title, project_path(@project) %> / Recap History</h1>
     <div class="tab-content mt-4" id="myTabContent">
       <% @reports.each do |report| %>
         <a class ="report-card-link" href="#report<%= report.id %>" data-toggle="collapse" aria-expanded="false" aria-controls="report<%= report.id %>">
