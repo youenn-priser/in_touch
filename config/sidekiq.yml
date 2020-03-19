@@ -7,6 +7,6 @@
   - webhook
 :schedule:
   notifications:
-    every: ['7d', first_in: '4h']
-    # cron: '30 14 * * 3'   # '30 14 * * 3'
+    # every: ['7d', first_in: '4h']
+    cron: '* 7 * * 1' # tout les lundis à 7h
     class: NotificationsSchedulerJob
