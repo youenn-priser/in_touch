@@ -160,7 +160,7 @@ body {
 /*--------------------sidebar-brand----------------------*/
 
 .sidebar-wrapper .sidebar-brand {
-  padding: 10px 20px;
+  padding: 20px 20px;
   display: flex;
   align-items: center;
 }
@@ -169,6 +169,7 @@ body {
   text-transform: uppercase;
   font-weight: bold;
   flex-grow: 1;
+  text-align: center;
 }
 
 .sidebar-wrapper .sidebar-brand #close-sidebar {
