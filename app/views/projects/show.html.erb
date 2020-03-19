@@ -45,7 +45,7 @@
 
 <!-- End of confirmation modals -->
 
-  <div class="us-container">
+  <div class="us-container mb-5">
     <ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
       <% @project.sprints.each_with_index do |sprint, index| %>
         <li class="nav-item">
@@ -56,7 +56,7 @@
       </li>
   </ul>
 
-  <div class="tab-content" id="myTabContent">
+  <div class="tab-content p-2 border-bottom border-left border-right rounded-right-top" id="myTabContent">
     <% @project.sprints.each_with_index do |sprint, index| %>
       <div class="tab-pane fade show <%= "active" if index.zero? %>" id="<%= sprint.title.gsub(/\s+/, "") %>" role="tabpanel" aria-labelledby="<%= sprint.title.gsub(/\s+/, "") %>-tab">
         <% sprint.user_stories.each_with_index do |user_story, index| %>
@@ -114,7 +114,7 @@
           <% end %>
 
           <div class="collapse" id="us<%= user_story.id %>">
-              <div class="rounded shadow-sm p-5 m-2 us-collapse">
+              <div class="rounded p-5 m-2 us-collapse">
                 <div class="row">
                   <div class="col-6 justify-content-arround">
 

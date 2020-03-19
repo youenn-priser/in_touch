@@ -2,6 +2,11 @@
   padding: 0;
   color: $main-blue;
 
+
+  .tab-content {
+    background-color: $background-blue;
+  }
+
   .user-story-card {
     background-color: white;
     border: 1px solid gray;
