@@ -2,6 +2,12 @@
   padding: 0;
   color: $main-blue;
 
+  .no-border {
+    border-bottom: none ;
+  }
+  .inactive {
+    border: 1px solid #DEE2E6;
+  }
 
   .tab-content {
     background-color: $background-blue;
