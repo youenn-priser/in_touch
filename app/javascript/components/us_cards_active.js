@@ -1,4 +1,4 @@
-const ActiveUsCards = () => {
+const activeUsCards = () => {
 
   const done_card = document.querySelectorAll('.done')
     done_card.forEach((card) => {
@@ -21,4 +21,4 @@ const ActiveUsCards = () => {
     })
 }
 
-export { ActiveUsCards }
+export { activeUsCards }
