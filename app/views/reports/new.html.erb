@@ -31,35 +31,43 @@
     </div>
     <div class="col-6 pl-4">
       <div class="recap-card bg-white shadow rounded py-2 px-4">
-        <h4 class="pb-4">Since last recap</h4>
+        <div>
+          <h4 class="pb-4">Since last recap</h4>
+        </div>
         <% if @db_record_changes %>
 
-          <h2>Project:</h2>
-          <div class="pb-2 row pl-4 align-items-end">
-            <div class="p-previous"><%= @db_record_changes[:project_progress][:previous] %></div>
-            <h2>% to</h2>
-            <div class="p-current"><%= @db_record_changes[:project_progress][:current] %></div>
-            <h2>%</h2>
+          <div>
+            <h2>Project:</h2>
+            <div class="pb-2 pl-4">
+              <!-- <div class="display-inline"> -->
+                <h2><span class="p-previous"><%= @db_record_changes[:project_progress][:previous] %>% to </span><span class="p-current"><%= @db_record_changes[:project_progress][:current] %>%</span></h2>
+              <!-- </div> -->
+            </div>
           </div>
 
-          <h2>Sprint:</h2>
-          <% if @db_record_changes[:sprints_status][:done] == "none"%>
-            <h2 class="pb-2"><%= @db_record_changes[:previous_sprint_progress] %>% to <%= @db_record_changes[:current_sprint_progress] %>%</h2>
-          <% else %>
-            <h2 class="pb-2">Sprint finished: <%= @db_record_changes[:sprints_status][:done] %></h2>
-            <h2 class="pb-2">Sprint started: <%= @db_record_changes[:sprints_status][:started] %></h2>
-            <h2 class="pb-2"><%= @db_record_changes[:current_sprint_progress] %>%</h2>
-          <% end %>
-
-          <% if !@db_record_changes[:user_stories_status].empty? %>
-            <h2>User stories:</h2>
-            <% @db_record_changes[:user_stories_status].each do |user_story| %>
-              <h2>- <%= @project.user_stories.find(user_story[:user_story_id]).title %> </h2>
-              <h2 class="pl-4"><%= user_story[:previous_status] %> to <%= user_story[:current_status]  %> </h2>
+          <div>
+            <h2>Sprint:</h2>
+            <% if @db_record_changes[:sprints_status][:done] == "none"%>
+              <h2 class="pb-2"><%= @db_record_changes[:previous_sprint_progress] %>% to <%= @db_record_changes[:current_sprint_progress] %>%</h2>
+            <% else %>
+              <h2 class="pb-2">Sprint finished: <%= @db_record_changes[:sprints_status][:done] %></h2>
+              <h2 class="pb-2">Sprint started: <%= @db_record_changes[:sprints_status][:started] %></h2>
+              <h2 class="pb-2"><%= @db_record_changes[:current_sprint_progress] %>%</h2>
             <% end %>
-          <% end %>
+          </div>
+
+          <div>
+            <% if !@db_record_changes[:user_stories_status].empty? %>
+              <h2>User stories:</h2>
+              <% @db_record_changes[:user_stories_status].each do |user_story| %>
+                <h2>- <%= @project.user_stories.find(user_story[:user_story_id]).title %> </h2>
+                <h2 class="pl-4"><%= user_story[:previous_status] %> to <%= user_story[:current_status]  %> </h2>
+              <% end %>
+            <% end %>
+          </div>
 
         <% end %>
+
       </div>
     </div>
   </div>
