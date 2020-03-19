@@ -30,13 +30,13 @@
       <% end %>
     </div>
     <div class="col-6 pl-4">
-      <div class="recap-card bg-white shadow rounded py-2 px-4">
+      <div class="recap-card bg-white rounded py-2 px-4">
         <div>
           <h4 class="pb-4">Since last recap</h4>
         </div>
         <% if @db_record_changes %>
 
-          <div>
+          <div class="border-bottom mb-4 pb-2">
             <h2>Project:</h2>
             <div class="pb-2 pl-4">
               <!-- <div class="display-inline"> -->
@@ -45,14 +45,14 @@
             </div>
           </div>
 
-          <div>
+          <div class="border-bottom mb-4 pb-2">
             <h2>Sprint:</h2>
             <% if @db_record_changes[:sprints_status][:done] == "none"%>
-              <h2 class="pb-2"><%= @db_record_changes[:previous_sprint_progress] %>% to <%= @db_record_changes[:current_sprint_progress] %>%</h2>
+              <h2 class="pb-2 pl-4"><span class="p-previous"><%= @db_record_changes[:previous_sprint_progress] %>% to </span><span class="p-current"><%= @db_record_changes[:current_sprint_progress] %>%</span></h2>
             <% else %>
-              <h2 class="pb-2">Sprint finished: <%= @db_record_changes[:sprints_status][:done] %></h2>
-              <h2 class="pb-2">Sprint started: <%= @db_record_changes[:sprints_status][:started] %></h2>
-              <h2 class="pb-2"><%= @db_record_changes[:current_sprint_progress] %>%</h2>
+              <h2 class="pb-2 pl-4"><span class="p-previous">Sprint finished: <%= @db_record_changes[:sprints_status][:done] %></span></h2>
+              <h2 class="pb-2 pl-4">Sprint started: <span class="p-current"><%= @db_record_changes[:sprints_status][:started] %></span></h2>
+              <h2 class="pb-2 pl-4">Progress <span class="p-current"><%= @db_record_changes[:current_sprint_progress] %>%</span></h2>
             <% end %>
           </div>
 
@@ -60,8 +60,8 @@
             <% if !@db_record_changes[:user_stories_status].empty? %>
               <h2>User stories:</h2>
               <% @db_record_changes[:user_stories_status].each do |user_story| %>
-                <h2>- <%= @project.user_stories.find(user_story[:user_story_id]).title %> </h2>
-                <h2 class="pl-4"><%= user_story[:previous_status] %> to <%= user_story[:current_status]  %> </h2>
+                <h2 class="mb-0 pl-2">- <%= @project.user_stories.find(user_story[:user_story_id]).title %> </h2>
+                <h2 class="pb-2 pl-4"><span class="p-previous">"<%= user_story[:previous_status] %>"" to </span><span class="p-current">"<%= user_story[:current_status]  %>"</span></h2>
               <% end %>
             <% end %>
           </div>
