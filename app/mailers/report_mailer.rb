@@ -13,8 +13,9 @@ class ReportMailer < ApplicationMailer
     @project = Project.find(params[:project])
     @subject = params[:subject]
     @content = params[:content]
+    @destiny = @project.reports.last.client_email
     mail(
-      to: @project.client.email,
+      to: @destiny,
       subject: "#{@subject}"
       )
   end
