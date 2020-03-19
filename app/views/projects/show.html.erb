@@ -34,11 +34,16 @@
   </div>
 
 </div>
+
+<!-- Delete confirmation modals -->
+
 <div class="row pt-4 d-flex justify-content-end">
   <div class="mr-4">
-    <%= link_to sanitize("<i class='fas fa-trash-alt'></i> Delete project"), project_path(@project), method: :delete, data: { confirm: 'Are you sure?' }, id: 'delete-project' %>
+    <%= link_to sanitize("<i class='fas fa-trash-alt'></i> Delete project"), project_path(@project), method: :delete, data: { confirm: 'Are you sure you want to delete the project?' }, id: 'delete-project' %>
   </div>
 </div>
+
+<!-- End of confirmation modals -->
 
   <div class="us-container">
     <ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
