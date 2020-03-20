@@ -47,7 +47,7 @@
 
   <div class="us-container mb-5">
     <ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
-      <% @project.sprints.each_with_index do |sprint, index| %>
+      <% @project.sprints.order(:id).each_with_index do |sprint, index| %>
         <li class="nav-item">
           <a class="nav-link inactive <%= "active" if index.zero? %> <%= 'no-border' if 'active' %>" id="<%= sprint.title.gsub(/\s+/, "") %>-tab" data-toggle="tab" href="#<%= sprint.title.gsub(/\s+/, "") %>" role="tab" aria-controls="<%= sprint.title.gsub(/\s+/, "") %>" aria-selected="true"> <i class="fas fa-running"></i> <%= sprint.title %></a>
           </li>
@@ -59,7 +59,7 @@
   <div class="tab-content p-2 border-bottom border-left border-right rounded-right-top" id="myTabContent">
     <% @project.sprints.each_with_index do |sprint, index| %>
       <div class="tab-pane fade show <%= "active" if index.zero? %>" id="<%= sprint.title.gsub(/\s+/, "") %>" role="tabpanel" aria-labelledby="<%= sprint.title.gsub(/\s+/, "") %>-tab">
-        <% sprint.user_stories.each_with_index do |user_story, index| %>
+        <% sprint.user_stories.order(:id).each_with_index do |user_story, index| %>
           <% if user_story.current_status == 'done' %>
             <a class ="us-card-link" href="#us<%= user_story.id %>" data-toggle="collapse" aria-expanded="false" aria-controls="us<%= user_story.id %>">
               <div class="user-story-card rounded shadow-sm p-5 mt-2 done">
