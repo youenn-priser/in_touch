@@ -10,7 +10,7 @@ module RecordModule
 
     private
     def greetings
-      "Dear #{@project.client.first_name},"
+      "Dear #{@project.client.first_name},\n"
     end
 
     def project_progress
