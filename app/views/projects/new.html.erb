@@ -6,12 +6,12 @@
   <hr>
 
   <div class="row m-2">
-    <div class="col-6 py-2">
+    <div class="col-4 py-2">
       <div class="d-flex">
         <p class="pl-3" style="font-size: 18px">Project</p>
       </div>
     </div>
-    <div class="col-6 pt-2">
+    <div class="col-8 pt-2">
       <form action="/projects" method="post" class="project-form form-group">
         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
         <div class="project-info">
@@ -28,12 +28,12 @@
   <hr>
 
   <div class="row m-2">
-    <div class="col-6 pt-2">
+    <div class="col-4 pt-2">
        <div class="d-flex align-items-end">
         <p class="pl-3 m-0" style="font-size: 18px">Client</p>
       </div>
     </div>
-    <div class="col-6 d-flex pt-2 align-items-end justify-content-between d-flex align-items-end">
+    <div class="col-8 d-flex pt-2 align-items-end justify-content-between d-flex align-items-end">
       <div class="project-info flex-grow-1 mr-2">
           <select type="text" name="project_client" id="project_client" class= "form-control mb-2">
               <option value="">Select your client</option>
