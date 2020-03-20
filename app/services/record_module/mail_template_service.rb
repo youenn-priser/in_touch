@@ -20,7 +20,7 @@ module RecordModule
 
     def sprint_progress
       # We are currently working on sprint 2.
-      return "We are currently working on sprint #{ ProgressModule::CurrentSprintService.new(@project).call }."
+      return "We are currently working on sprint #{ ProgressModule::CurrentSprintService.new(@project).call + 1 }."
     end
 
     def in_progress
