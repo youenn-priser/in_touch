@@ -70,11 +70,11 @@ module RecordModule
     end
 
     def current_sprint(project)
-      last_sprint_done = project.sprints.find_by(done: true)
+      last_sprint_done = project.sprints.order(:title).where(done: true).last
       if last_sprint_done
-        current_sprint_index = (project.sprints.index(last_sprint_done) + 1) + 1
+        current_sprint_index = project.sprints.order(:title).index(last_sprint_done)
       else
-        return 1
+        return 0
       end
     end
 
