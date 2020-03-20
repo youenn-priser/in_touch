@@ -61,7 +61,7 @@
               <h2>User stories:</h2>
               <% @db_record_changes[:user_stories_status].each do |user_story| %>
                 <h2 class="mb-0 pl-2">- <%= @project.user_stories.find(user_story[:user_story_id]).title %> </h2>
-                <h2 class="pb-2 pl-4"><span class="p-previous">"<%= user_story[:previous_status] %>"" to </span><span class="p-current">"<%= user_story[:current_status]  %>"</span></h2>
+                <h2 class="pb-2 pl-4"><span class="us-previous">"<%= user_story[:previous_status] %>"" to </span><span class="us-current">"<%= user_story[:current_status]  %>"</span></h2>
               <% end %>
             <% end %>
           </div>
