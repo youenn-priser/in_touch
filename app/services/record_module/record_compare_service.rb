@@ -10,8 +10,8 @@ module RecordModule
         project_id: @current_record[:project_id],
         project_progress: {previous: @previous_record[:progress] ,current: @current_record[:progress]},
         sprints_status: sprints_done, #{ done: "sprint_id" ou "none", started: "sprint_id" ou "none"}
-        previous_sprint_progress: @previous_record[:sprints][@previous_record[:current_sprint] - 1][:progress],
-        current_sprint_progress: @current_record[:sprints][@current_record[:current_sprint] - 1][:progress],
+        previous_sprint_progress: @previous_record[:sprints][@previous_record[:current_sprint]][:progress],
+        current_sprint_progress: @current_record[:sprints][@current_record[:current_sprint]][:progress],
         user_stories_status: user_stories_done #{user_story_id: , previous_status: , current_status: }
         #tasks_status: [{task_id: "fff", previous: "status or none", current: "to do, or done"}]
       }
@@ -20,8 +20,8 @@ module RecordModule
     def sprints_done
       if @current_record[:current_sprint] > @previous_record[:current_sprint]
         {
-          done: @previous_record[:sprints][@previous_record[:current_sprint] - 1][:sprint_id],
-          started: @current_record[:sprints][@current_record[:current_sprint] - 1][:sprint_id]
+          done: @previous_record[:sprints][@previous_record[:current_sprint]][:sprint_id],
+          started: @current_record[:sprints][@current_record[:current_sprint]][:sprint_id]
         }
       else
         {
@@ -33,7 +33,7 @@ module RecordModule
 
     def user_stories_done
       if @current_record[:current_sprint] == @previous_record[:current_sprint]
-        sprint_index     = @current_record[:current_sprint] -1
+        sprint_index     = @current_record[:current_sprint]
         previous_us_list = @previous_record[:sprints][sprint_index][:user_stories]
         current_us_list  = @current_record[:sprints][sprint_index][:user_stories]
         us_list = []
