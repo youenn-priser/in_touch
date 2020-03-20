@@ -123,10 +123,10 @@
                           <li>
                             <div class="div m-2">
                               <h4 style="color: #034A9E"><i class="fas fa-comments"></i> Waiting for client feedback</h4>
-                                <% if user_story.tasks.where(current_status: "waiting client").count == 0 %>
+                                <% if user_story.tasks.where(current_status: "waiting for client").count == 0 %>
                                   <p>No tasks in this user story need client feedback</p>
                                 <% else %>
-                                  <% user_story.tasks.where(current_status: "waiting client").each do |task| %>
+                                  <% user_story.tasks.where(current_status: "waiting for client").each do |task| %>
                                     <ul>
                                       <li>
                                         <p><%= task.title %></p>

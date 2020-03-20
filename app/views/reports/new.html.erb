@@ -1,5 +1,5 @@
 <div class="container form-container-new-report rounded p-4 mt-2 shadow">
-  <div class="row justify-content-center"><h1><%= @project.title %> / New recap <i class="fas fa-paper-plane"></i></h1></div>
+  <div class="row justify-content-center"><h1><%= link_to @project.title, project_path(@project) %>/ New recap <i class="fas fa-paper-plane"></i></h1></div>
     <div class="row mt-4">
       <div class="col-6 pl-4">
         <%= form_for [@project, @report] do |f| %>
