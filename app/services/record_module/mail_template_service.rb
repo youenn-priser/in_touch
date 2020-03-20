@@ -51,8 +51,8 @@ module RecordModule
     end
 
     def goodbye
-      user_first_name = current_user.name ? current_user.name : current_user.email.split(".").first.capitalize
-      "Have a great day,\nRegards,\n#{user_first_name}"
+      # user_first_name = current_user.name ? current_user.name : current_user.email.split(".").first.capitalize
+      "\nHave a great day,\nRegards,\nRomain Garcia"
     end
   end
 end
