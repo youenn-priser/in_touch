@@ -177,7 +177,7 @@
                             data: [
                                 <%=  user_story.tasks.where(current_status: "to do").count %>,
                                 <%=  user_story.tasks.where(current_status: "in progress").count %>,
-                                <%=  user_story.tasks.where(current_status: "waiting client").count %>,
+                                <%=  user_story.tasks.where(current_status: "waiting for client").count %>,
                                 <%=  user_story.tasks.where(current_status: "to review/debug").count %>,
                                 <%=  user_story.tasks.where(current_status: "to deploy").count %>,
                                 <%=  user_story.tasks.where(current_status: "done").count %>,
