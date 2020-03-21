@@ -54,16 +54,36 @@ class TrelloWebhooksController < ActionController::Base
   ## Non-handled action at that time
   def delete_card(payload)
     puts "Payload is triggered by '#delete_card' =>"
-    p payload
+    p payload["action"]
   end
 
   def update_list(payload)
     puts "Payload is triggered by '#update_list' =>"
-    p payload
+    p payload["action"]
   end
 
   def remove_label_from_card(payload)
     puts "Payload is triggered by '#remove_label_from_card' =>"
+    p payload["action"]
+  end
+
+  def convert_to_card_from_check_item(payload)
+    puts "Payload is triggered by '#convert_to_card_from_check_item' =>"
+    p payload["action"]
+  end
+
+  def update_check_item(payload)
+    puts "Payload is triggered by '#update_check_item' =>"
+    p payload["action"]
+  end
+
+  def create_check_item(payload)
+    puts "Payload is triggered by '#create_check_item' =>"
+    p payload
+  end
+
+  def add_checklist_to_card(payload)
+    puts "Payload is triggered by '#add_checklist_to_card' =>"
     p payload
   end
 

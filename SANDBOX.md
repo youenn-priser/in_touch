@@ -594,7 +594,96 @@ task_move_status = {
   }
 }
 ```
+## Using Trello Butler to create a sub task from US checklist ##
+```ruby
+{
+  "model"=>{
+    "id"=>"5e76021bc643c636cf6759a1",
+    "name"=>"Test avec butler mano",
+    "desc"=>"",
+    "descData"=>nil, "closed"=>false, "idOrganization"=>nil, "idEnterprise"=>nil, "pinned"=>false, "url"=>"https://trello.com/b/fP12Hm1U/test-avec-butler-mano", "shortUrl"=>"https://trello.com/b/fP12Hm1U", "prefs"=>{"permissionLevel"=>"private", "hideVotes"=>false, "voting"=>"disabled", "comments"=>"members", "invitations"=>"members", "selfJoin"=>true, "cardCovers"=>true, "isTemplate"=>false, "cardAging"=>"regular", "calendarFeedEnabled"=>false, "background"=>"blue", "backgroundImage"=>nil, "backgroundImageScaled"=>nil, "backgroundTile"=>false, "backgroundBrightness"=>"dark", "backgroundColor"=>"#0079BF", "backgroundBottomColor"=>"#0079BF", "backgroundTopColor"=>"#0079BF", "canBePublic"=>true, "canBeEnterprise"=>true, "canBeOrg"=>true, "canBePrivate"=>true, "canInvite"=>true}, "labelNames"=>{"green"=>"Sprint 1", "yellow"=>"", "orange"=>"", "red"=>"", "purple"=>"", "blue"=>"", "sky"=>"", "lime"=>"", "pink"=>"", "black"=>""}},
+    "action"=>{
+      "id"=>"5e760274e8eca042fd81627e",
+      "idMemberCreator"=>"5e15f0988d06c5602566b8a4",
+      "data"=>{
+        "attachment"=>{
+          "id"=>"5e760274e8eca042fd81627d",
+          "name"=>"https://trello.com/c/5UyXex10",
+          "url"=>"https://trello.com/c/5UyXex10"
+        },
+        "card"=>{
+          "id"=>"5e7602748e731d277100a76b",
+          "name"=>"Task 1.1",
+          "idShort"=>2,
+          "shortLink"=>"sMUNOnty"
+        },
+        "list"=>{
+          "id"=>"5e76021ee2890a028a1f25e0",
+          "name"=>"To do"
+        },
+        "board"=>{"id"=>"5e76021bc643c636cf6759a1", "name"=>"Test avec butler mano", "shortLink"=>"fP12Hm1U"}}, "type"=>"addAttachmentToCard", "date"=>"2020-03-21T12:03:00.813Z", "limits"=>{}, "display"=>{"translationKey"=>"action_add_attachment_to_card", "entities"=>{"attachment"=>{"type"=>"attachment", "id"=>"5e760274e8eca042fd81627d", "link"=>true, "text"=>"https://trello.com/c/5UyXex10", "url"=>"https://trello.com/c/5UyXex10"}, "attachmentPreview"=>{"type"=>"attachmentPreview", "id"=>"5e760274e8eca042fd81627d", "originalUrl"=>"https://trello.com/c/5UyXex10"}, "card"=>{"type"=>"card", "id"=>"5e7602748e731d277100a76b", "shortLink"=>"sMUNOnty", "text"=>"Task 1.1"}, "memberCreator"=>{"type"=>"member", "id"=>"5e15f0988d06c5602566b8a4", "username"=>"youennpriser1", "text"=>"Youenn PRISER"}}}, "memberCreator"=>{"id"=>"5e15f0988d06c5602566b8a4", "activityBlocked"=>false, "avatarHash"=>"19134595ae40f2c5271054102acba78f", "avatarUrl"=>"https://trello-members.s3.amazonaws.com/5e15f0988d06c5602566b8a4/19134595ae40f2c5271054102acba78f", "fullName"=>"youenn.priser", "idMemberReferrer"=>nil, "initials"=>"Y", "nonPublic"=>{}, "nonPublicAvailable"=>true, "username"=>"youennpriser1"}}}
+```
 
+
+
+```ruby
+{
+  "model"=>{
+    "id"=>"5e76021bc643c636cf6759a1",
+    "name"=>"Test avec butler mano",
+    "desc"=>"",
+    "descData"=>nil,
+    "closed"=>false,
+    "idOrganization"=>nil,
+    "idEnterprise"=>nil,
+    "pinned"=>false,
+    "url"=>"https://trello.com/b/fP12Hm1U/test-avec-butler-mano",
+    "shortUrl"=>"https://trello.com/b/fP12Hm1U",
+    "prefs"=>{
+      "permissionLevel"=>"private",
+      "hideVotes"=>false,
+      "voting"=>"disabled",
+      "comments"=>"members",
+      "invitations"=>"members",
+      "selfJoin"=>true,
+      "cardCovers"=>true,
+      "isTemplate"=>false,
+      "cardAging"=>"regular",
+      "calendarFeedEnabled"=>false,
+      "background"=>"blue",
+      "backgroundImage"=>nil,
+      "backgroundImageScaled"=>nil,
+      "backgroundTile"=>false,
+      "backgroundBrightness"=>"dark",
+      "backgroundColor"=>"#0079BF",
+      "backgroundBottomColor"=>"#0079BF",
+      "backgroundTopColor"=>"#0079BF",
+      "canBePublic"=>true,
+      "canBeEnterprise"=>true,
+      "canBeOrg"=>true,
+      "canBePrivate"=>true,
+      "canInvite"=>true
+    },
+    "labelNames"=>{
+      "green"=>"Sprint 1",
+      "yellow"=>"",
+      "orange"=>"",
+      "red"=>"weight 2",
+      "purple"=>"",
+      "blue"=>"",
+      "sky"=>"",
+      "lime"=>"",
+      "pink"=>"",
+      "black"=>""
+    }
+  },
+  "action"=>{
+    "id"=>"5e7602d6731963615be6f901",
+    "idMemberCreator"=>"5e15f0988d06c5602566b8a4",
+    "data"=>{
+      "value"=>"red",
+      "text"=>"weight 2", "card"=>{"id"=>"5e7602748e731d277100a76b", "name"=>"Task 1.1", "idShort"=>2, "shortLink"=>"sMUNOnty"}, "board"=>{"id"=>"5e76021bc643c636cf6759a1", "name"=>"Test avec butler mano", "shortLink"=>"fP12Hm1U"}, "label"=>{"id"=>"5e76021cdabc454631c79589", "name"=>"weight 2", "color"=>"red"}}, "type"=>"addLabelToCard", "date"=>"2020-03-21T12:04:38.470Z", "limits"=>{}, "display"=>{"translationKey"=>"action_add_label_to_card", "entities"=>{"label"=>{"type"=>"label", "color"=>"red", "text"=>"weight 2"}, "card"=>{"type"=>"card", "id"=>"5e7602748e731d277100a76b", "shortLink"=>"sMUNOnty", "text"=>"Task 1.1"}, "memberCreator"=>{"type"=>"member", "id"=>"5e15f0988d06c5602566b8a4", "username"=>"youennpriser1", "text"=>"Youenn PRISER"}}}, "memberCreator"=>{"id"=>"5e15f0988d06c5602566b8a4", "activityBlocked"=>false, "avatarHash"=>"19134595ae40f2c5271054102acba78f", "avatarUrl"=>"https://trello-members.s3.amazonaws.com/5e15f0988d06c5602566b8a4/19134595ae40f2c5271054102acba78f", "fullName"=>"youenn.priser", "idMemberReferrer"=>nil, "initials"=>"Y", "nonPublic"=>{}, "nonPublicAvailable"=>true, "username"=>"youennpriser1"}}}
+``
 ## Update Card
 h = {"model"=>{"id"=>"5e69035202fc7b70ef88da61", "name"=>"test board", "desc"=>"", "descData"=>nil, "closed"=>false, "idOrganization"=>nil, "idEnterprise"=>nil, "pinned"=>false, "url"=>"https://trello.com/b/A0i2XL6S/test-board", "shortUrl"=>"https://trello.com/b/A0i2XL6S", "prefs"=>{"permissionLevel"=>"private", "hideVotes"=>false, "voting"=>"disabled", "comments"=>"members", "invitations"=>"members", "selfJoin"=>true, "cardCovers"=>true, "isTemplate"=>false, "cardAging"=>"regular", "calendarFeedEnabled"=>false, "background"=>"blue", "backgroundImage"=>nil, "backgroundImageScaled"=>nil, "backgroundTile"=>false, "backgroundBrightness"=>"dark", "backgroundColor"=>"#0079BF", "backgroundBottomColor"=>"#0079BF", "backgroundTopColor"=>"#0079BF", "canBePublic"=>true, "canBeEnterprise"=>true, "canBeOrg"=>true, "canBePrivate"=>true, "canInvite"=>true}, "labelNames"=>{"green"=>"", "yellow"=>"", "orange"=>"", "red"=>"", "purple"=>"", "blue"=>"", "sky"=>"", "lime"=>"", "pink"=>"", "black"=>""}}, "action"=>{"id"=>"5e6904863af4ed5a206fb353", "idMemberCreator"=>"5e15f0988d06c5602566b8a4", "data"=>{"old"=>{"idList"=>"5e690356e77a07361d33fc5a"}, "card"=>{"idList"=>"5e6903556194497a60ca05a6", "id"=>"5e6903caf89c13450d829e93", "name"=>"Test card webhoook", "idShort"=>1, "shortLink"=>"StoSU6vK"}, "board"=>{"id"=>"5e69035202fc7b70ef88da61", "name"=>"test board", "shortLink"=>"A0i2XL6S"}, "listBefore"=>{"id"=>"5e690356e77a07361d33fc5a", "name"=>"Sprint1"}, "listAfter"=>{"id"=>"5e6903556194497a60ca05a6", "name"=>"Sprint2"}}, "type"=>"updateCard", "date"=>"2020-03-11T15:32:22.198Z", "limits"=>{}, "display"=>{"translationKey"=>"action_move_card_from_list_to_list", "entities"=>{"card"=>{"type"=>"card", "idList"=>"5e6903556194497a60ca05a6", "id"=>"5e6903caf89c13450d829e93", "shortLink"=>"StoSU6vK", "text"=>"Test card webhoook"}, "listBefore"=>{"type"=>"list", "id"=>"5e690356e77a07361d33fc5a", "text"=>"Sprint1"}, "listAfter"=>{"type"=>"list", "id"=>"5e6903556194497a60ca05a6", "text"=>"Sprint2"}, "memberCreator"=>{"type"=>"member", "id"=>"5e15f0988d06c5602566b8a4", "username"=>"youennpriser1", "text"=>"Youenn PRISER"}}}, "memberCreator"=>{"id"=>"5e15f0988d06c5602566b8a4", "activityBlocked"=>false, "avatarHash"=>"19134595ae40f2c5271054102acba78f", "avatarUrl"=>"https://trello-members.s3.amazonaws.com/5e15f0988d06c5602566b8a4/19134595ae40f2c5271054102acba78f", "fullName"=>"youenn.priser", "idMemberReferrer"=>nil, "initials"=>"Y", "nonPublic"=>{}, "nonPublicAvailable"=>true, "username"=>"youennpriser1"}}}
 
