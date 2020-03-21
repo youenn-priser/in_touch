@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   # devise :database_authenticatable, :registerable,
   #        :recoverable, :rememberable, :validatable,
-
+  has_many :projects
   devise :omniauthable, omniauth_providers: %i[trello]
 
     def self.find_for_trello_oauth(auth)
