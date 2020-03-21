@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 
   def index
-    @projects = Project.all # where(user: current_user)
+    @projects = Project.where(user: current_user) # .all
   end
 
   def show
@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    @clients = Client.all
+    @clients = current_user.projects.map { |project| project.client }
     # @clients = Client.all.map { |client| ["#{client.first_name} #{client.last_name}", client]}
     @project = Project.new
     # @project.client.build
